@@ -9,6 +9,6 @@ namespace FinishLine.Core.Repository
 {
     public interface IRunnerRepository
     {
-        Dictionary<string, Runner> GetListOFRunners();
+        Dictionary<int, Runner> GetListOFRunners();
     }
 }

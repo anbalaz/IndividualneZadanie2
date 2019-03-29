@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RunnerManager.cs" />
-    <Compile Include="CRUDRunner.cs" />
     <Compile Include="Model\Runner.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Repository\StateRepository.cs" />
