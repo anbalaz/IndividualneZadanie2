@@ -1,15 +1,11 @@
 ﻿using FinishLine.Core.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinishLine.Core.Repository
 {
-    public class RunnerRepository:IRunnerRepository
+    public class RunnerRepository : IRunnerRepository
     {
-        private static Dictionary<string,Runner> runMTFCKR = new Dictionary<string, Runner>();
+        private static Dictionary<string, Runner> runMTFCKR = new Dictionary<string, Runner>();
 
         private void PopulateDB()
         {
