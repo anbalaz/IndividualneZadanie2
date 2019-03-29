@@ -5,11 +5,11 @@ namespace FinishLine.Core.Model
     public class Runner
     {
         public string Name { get; set; }
-        public State StateOfOrigin { get; set; }
+        public int StateOfOrigin { get; set; }
         public int Age { get; set; }
         public Gender Sex { get; set; }
 
-        public Runner(string name, State stateOfOrigin, int age, Gender sex)
+        public Runner(string name, int stateOfOrigin, int age, Gender sex)
         {
             Name = name;
             StateOfOrigin = stateOfOrigin;

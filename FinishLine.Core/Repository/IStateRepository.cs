@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FinishLine.Core.Repository
 {
-    public interface IFileManager
+    public interface IStateRepository
     {
-         List<State> ReturnListOFStates();
+         List<State> GetListOFStates();
     }
 }

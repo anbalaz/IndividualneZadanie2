@@ -2,6 +2,7 @@
 using FinishLine.Core.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,10 @@ namespace FinishLine
         [STAThread]
         static void Main()
         {
-            FileManager file = new FileManager();
-            file.ReturnListOFStates();
+            IStateRepository file = new StateRepository();
+            file.GetListOFStates();
+            string number = 5.ToString("000");
+            Debug.WriteLine(number);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

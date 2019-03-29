@@ -5,7 +5,7 @@ using System.IO;
 
 namespace FinishLine.Core.Repository
 {
-    public class FileManager : IFileManager
+    public class StateRepository : IStateRepository
     {
         private const string COUNTRY_CODE = "CountryCode";
         private const string SLOVAK_SHORT_NAME = "SlovakShortName";
@@ -13,7 +13,7 @@ namespace FinishLine.Core.Repository
         private const string STATE_FILE_ADDRESS = @"C:\Users\transformer5\Desktop\git\priklady\IndividualneZadanie2\Data\countries.csv";
         private const char VALUE_SEPARATOR = ';';
 
-        public List<State> ReturnListOFStates()
+        public List<State> GetListOFStates()
         {
             int count = 0;
             List<State> States = new List<State>();
@@ -26,7 +26,6 @@ namespace FinishLine.Core.Repository
                 csvReader.ReadHeaderRecord();
                 while (csvReader.HasMoreRecords)
                 {
-
                     var datarecord = csvReader.ReadDataRecord();
                     //States.Add(new StateName(datarecord[COUNTRY_CODE], datarecord[SLOVAK_SHORT_NAME], datarecord[ENGLISH_SHORT_NAME]));
                     StatesDictionary.Add(count++, new State(datarecord[COUNTRY_CODE], datarecord[SLOVAK_SHORT_NAME], datarecord[ENGLISH_SHORT_NAME]));
@@ -34,5 +33,6 @@ namespace FinishLine.Core.Repository
             }
             return States;
         }
+
     }
 }

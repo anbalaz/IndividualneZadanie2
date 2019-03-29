@@ -16,5 +16,15 @@ namespace FinishLine
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dtGrdRegisteredRunnersVw.Rows.Add("", "", "");
+        }
+        private void populateDataGrid()
+        {
+
+
+        }
     }
 }
