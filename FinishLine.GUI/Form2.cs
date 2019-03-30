@@ -46,6 +46,7 @@ namespace FinishLine
             cmbBxCountryAdd.DisplayMember = "Value";
             cmbBxCountryAdd.ValueMember = "Key";
 
+
             cmbBxCountryEdit.DataSource = new BindingSource(_stateManager.GetDictionaryOFStates(), null);
             cmbBxCountryEdit.DisplayMember = "Value";
             cmbBxCountryEdit.ValueMember = "Key";
@@ -57,9 +58,24 @@ namespace FinishLine
             cmbBxSexEdit.DataSource = Enum.GetValues(typeof(Gender));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bttn_AddRunnerWithGeneratedId_Click(object sender, EventArgs e)
         {
+            if (!txtBxRunnerNameAdd.Text.Equals(string.Empty))
+            {
+                _runnerManager.AddRunnerToList(new Runner(
+                    txtBxRunnerNameAdd.Text,
+                    (int)cmbBxCountryAdd.SelectedValue,
+                    (int)nmrcUpDwnAgeAdd.Value,
+                    (Gender)Enum.Parse(typeof(Gender), cmbBxSexAdd.SelectedValue.ToString()
+                    )));
 
+                dtGrdRegisteredRunnersVw.Update();
+            }
+            else
+            {
+                MessageBox.Show("Please select a value");
+                return;
+            }
         }
 
         private void com(object sender, EventArgs e)

@@ -30,7 +30,6 @@ namespace FinishLine
             //runnerManager.RemoveRunnerFromDirectory(3);
             //runnerManager.IsKeyIdValid(999);
             //runnerManager.AddRunnerToList(new Runner("Jozino",20,20,Gender.Unknown));
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1(runnerManager, stateManager));

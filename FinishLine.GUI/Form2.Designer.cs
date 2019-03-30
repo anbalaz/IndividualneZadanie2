@@ -93,7 +93,7 @@
             this.bttnAddRunnerWithGeneratedId.TabIndex = 1;
             this.bttnAddRunnerWithGeneratedId.Text = "Add runner";
             this.bttnAddRunnerWithGeneratedId.UseVisualStyleBackColor = true;
-            this.bttnAddRunnerWithGeneratedId.Click += new System.EventHandler(this.button1_Click);
+            this.bttnAddRunnerWithGeneratedId.Click += new System.EventHandler(this.bttn_AddRunnerWithGeneratedId_Click);
             // 
             // txtBxRunnerNameAdd
             // 
