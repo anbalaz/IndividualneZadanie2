@@ -53,6 +53,7 @@
     <Compile Include="Repository\IStateRepository.cs" />
     <Compile Include="Repository\IRunnerRepository.cs" />
     <Compile Include="Repository\RunnerRepository.cs" />
+    <Compile Include="StateManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

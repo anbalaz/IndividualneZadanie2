@@ -8,7 +8,7 @@ namespace FinishLine.Core
     public class RunnerManager
     {
         private IRunnerRepository _runnerRepository;
-        private Dictionary<int, Runner> _runnersDirectory;
+        public readonly Dictionary<int, Runner> _runnersDirectory;
         private static int _keyId = 1;
         private const int KEY_MINIMUM_VALUE = 1;
         private const int KEY_MAXIMUM_VALUE = 999;

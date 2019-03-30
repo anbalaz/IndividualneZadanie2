@@ -10,7 +10,7 @@ namespace FinishLine.Core.Repository
         private const string COUNTRY_CODE = "CountryCode";
         private const string SLOVAK_SHORT_NAME = "SlovakShortName";
         private const string ENGLISH_SHORT_NAME = "EnglishShortName";
-        private static string STATE_FILE_ADDRESS =Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"Data\countries.csv");
+        private static string STATE_FILE_ADDRESS = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"Data\countries.csv");
         private const char VALUE_SEPARATOR = ';';
 
         public Dictionary<int, State> GetListOFStates()
@@ -31,6 +31,5 @@ namespace FinishLine.Core.Repository
             }
             return States;
         }
-
     }
 }

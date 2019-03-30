@@ -18,19 +18,20 @@ namespace FinishLine
         [STAThread]
         static void Main()
         {
+
             //IStateRepository file = new StateRepository();
             //file.GetListOFStates();
             //string number = 5.ToString("000");
             //Debug.WriteLine(number);
-            //IRunnerRepository runnerRepository = new RunnerRepository();
-            //RunnerManager runnerManager = new RunnerManager(runnerRepository);
+            IRunnerRepository runnerRepository = new RunnerRepository();
+            RunnerManager runnerManager = new RunnerManager(runnerRepository);
             //runnerManager.RemoveRunnerFromDirectory(3);
             //runnerManager.IsKeyIdValid(999);
             //runnerManager.AddRunnerToList(new Runner("Jozino",20,20,Gender.Unknown));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1(runnerManager));
         }
     }
 }
