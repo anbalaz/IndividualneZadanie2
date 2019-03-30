@@ -1,4 +1,5 @@
 ﻿using FinishLine.Core;
+using FinishLine.Core.Model;
 using FinishLine.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,15 @@ namespace FinishLine
         [STAThread]
         static void Main()
         {
-            IStateRepository file = new StateRepository();
-            file.GetListOFStates();
-            string number = 5.ToString("000");
-            Debug.WriteLine(number);
+            //IStateRepository file = new StateRepository();
+            //file.GetListOFStates();
+            //string number = 5.ToString("000");
+            //Debug.WriteLine(number);
+            //IRunnerRepository runnerRepository = new RunnerRepository();
+            //RunnerManager runnerManager = new RunnerManager(runnerRepository);
+            //runnerManager.RemoveRunnerFromDirectory(3);
+            //runnerManager.IsKeyIdValid(999);
+            //runnerManager.AddRunnerToList(new Runner("Jozino",20,20,Gender.Unknown));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

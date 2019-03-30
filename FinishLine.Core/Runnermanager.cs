@@ -14,15 +14,10 @@ namespace FinishLine.Core
         private const int KEY_MAXIMUM_VALUE = 999;
 
 
-        public RunnerManager(IRunnerRepository runnerRepository, Dictionary<int, Runner> runnerList)
+        public RunnerManager(IRunnerRepository runnerRepository)
         {
             _runnerRepository = runnerRepository;
-            _runnersDirectory = runnerList;
-        }
-
-        public void LoadDataFromFile()
-        {
-            _runnersDirectory = _runnerRepository.GetListOFRunners();
+            _runnersDirectory = runnerRepository.GetListOFRunners();
             _keyId = _runnersDirectory.Keys.Max();
         }
 
