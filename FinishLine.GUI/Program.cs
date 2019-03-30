@@ -23,6 +23,8 @@ namespace FinishLine
             //file.GetListOFStates();
             //string number = 5.ToString("000");
             //Debug.WriteLine(number);
+            IStateRepository stateRepository = new StateRepository();
+            StateManager stateManager = new StateManager(stateRepository);
             IRunnerRepository runnerRepository = new RunnerRepository();
             RunnerManager runnerManager = new RunnerManager(runnerRepository);
             //runnerManager.RemoveRunnerFromDirectory(3);
@@ -31,7 +33,7 @@ namespace FinishLine
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(runnerManager));
+            Application.Run(new Form1(runnerManager, stateManager));
         }
     }
 }

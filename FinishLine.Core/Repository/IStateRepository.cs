@@ -5,6 +5,6 @@ namespace FinishLine.Core.Repository
 {
     public interface IStateRepository
     {
-        Dictionary<int, State> GetListOFStates();
+        Dictionary<int, State> GetDictionaryOFStates();
     }
 }

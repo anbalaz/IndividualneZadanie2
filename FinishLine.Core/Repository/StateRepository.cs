@@ -13,7 +13,7 @@ namespace FinishLine.Core.Repository
         private static string STATE_FILE_ADDRESS = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"Data\countries.csv");
         private const char VALUE_SEPARATOR = ';';
 
-        public Dictionary<int, State> GetListOFStates()
+        public Dictionary<int, State> GetDictionaryOFStates()
         {
             int count = 0;
             Dictionary<int, State> States = new Dictionary<int, State>();

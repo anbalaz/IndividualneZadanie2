@@ -79,5 +79,10 @@ namespace FinishLine.Core
             }
             return ret;
         }
+
+        public string KeyValueToString(int key)
+        {
+            return key.ToString("000");
+        }
     }
 }

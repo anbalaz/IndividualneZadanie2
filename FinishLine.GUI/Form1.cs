@@ -14,16 +14,18 @@ namespace FinishLine
     public partial class Form1 : Form
     {
         private RunnerManager _runnerManager;
+        private StateManager _stateManager;
 
-        public Form1(RunnerManager runnerManager)
+        public Form1(RunnerManager runnerManager, StateManager stateManager)
         {
             _runnerManager = runnerManager;
             InitializeComponent();
+            _stateManager = stateManager;
         }
 
         private void addRunnerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2(_runnerManager);
+            Form2 form = new Form2(_runnerManager, _stateManager);
             form.Show();
         }
     }

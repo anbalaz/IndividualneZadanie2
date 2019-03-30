@@ -8,11 +8,13 @@ namespace FinishLine
     public partial class Form2 : Form
     {
         private RunnerManager _runnerManager;
+        private StateManager _stateManager;
 
-        public Form2(RunnerManager runnerManager)
+        public Form2(RunnerManager runnerManager, StateManager stateManager)
         {
             InitializeComponent();
             _runnerManager = runnerManager;
+            _stateManager = stateManager;
             populateDataGrid();
         }
 
@@ -32,7 +34,7 @@ namespace FinishLine
 
             foreach (var runner in _runnerManager._runnersDirectory)
             {
-                dtGrdRegisteredRunnersVw.Rows.Add(runner.Key, runner.Value.Name, runner.Value.StateOfOrigin, runner.Value.Age, runner.Value.Sex);
+                dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key), runner.Value.Name, _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName, runner.Value.Age, runner.Value.Sex);
             }
         }
 
