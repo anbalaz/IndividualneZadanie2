@@ -1,6 +1,6 @@
 ﻿using FinishLine.Core;
+using FinishLine.Core.Model;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FinishLine
@@ -13,19 +13,21 @@ namespace FinishLine
         public Form2(RunnerManager runnerManager, StateManager stateManager)
         {
             InitializeComponent();
+
             _runnerManager = runnerManager;
             _stateManager = stateManager;
-            populateDataGrid();
+            PopulateDataGrid();
+            InitCountrycmbx();
+            InitSex();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-        private void populateDataGrid()
-        {
-            Dictionary<char, double> myList = new Dictionary<char, double>();
 
+        private void PopulateDataGrid()
+        {
             dtGrdRegisteredRunnersVw.Columns.Add("Key", "NUMBER");
             dtGrdRegisteredRunnersVw.Columns.Add("Name", "NAME");
             dtGrdRegisteredRunnersVw.Columns.Add("StateOfOrigin", "STATE");
@@ -36,6 +38,23 @@ namespace FinishLine
             {
                 dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key), runner.Value.Name, _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName, runner.Value.Age, runner.Value.Sex);
             }
+        }
+
+        private void InitCountrycmbx()
+        {
+            cmbBxCountryAdd.DataSource = new BindingSource(_stateManager.GetDictionaryOFStates(), null);
+            cmbBxCountryAdd.DisplayMember = "Value";
+            cmbBxCountryAdd.ValueMember = "Key";
+
+            cmbBxCountryEdit.DataSource = new BindingSource(_stateManager.GetDictionaryOFStates(), null);
+            cmbBxCountryEdit.DisplayMember = "Value";
+            cmbBxCountryEdit.ValueMember = "Key";
+        }
+
+        private void InitSex()
+        {
+            cmbBxSexAdd.DataSource = Enum.GetValues(typeof(Gender));
+            cmbBxSexEdit.DataSource = Enum.GetValues(typeof(Gender));
         }
 
         private void button1_Click(object sender, EventArgs e)

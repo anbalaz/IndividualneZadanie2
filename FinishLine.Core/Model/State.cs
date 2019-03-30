@@ -13,5 +13,9 @@
             EnglishShortName = englishShortName;
         }
 
+        public override string ToString()
+        {
+            return SlovakShortName;
+        }
     }
 }
