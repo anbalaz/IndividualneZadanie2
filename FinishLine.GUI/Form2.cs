@@ -16,6 +16,7 @@ namespace FinishLine
 
             _runnerManager = runnerManager;
             _stateManager = stateManager;
+            SetRowsToDatagrid();
             PopulateDataGrid();
             InitCountrycmbx();
             InitSex();
@@ -26,17 +27,24 @@ namespace FinishLine
 
         }
 
-        private void PopulateDataGrid()
+        private void SetRowsToDatagrid()
         {
             dtGrdRegisteredRunnersVw.Columns.Add("Key", "NUMBER");
             dtGrdRegisteredRunnersVw.Columns.Add("Name", "NAME");
             dtGrdRegisteredRunnersVw.Columns.Add("StateOfOrigin", "STATE");
             dtGrdRegisteredRunnersVw.Columns.Add("Age", "AGE");
             dtGrdRegisteredRunnersVw.Columns.Add("Sex", "SEX");
+        }
 
-            foreach (var runner in _runnerManager._runnersDirectory)
+        private void PopulateDataGrid()
+        {
+            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
             {
-                dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key), runner.Value.Name, _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName, runner.Value.Age, runner.Value.Sex);
+                dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                    runner.Value.Name,
+                    _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName,
+                    runner.Value.Age,
+                    runner.Value.Sex);
             }
         }
 
@@ -45,6 +53,7 @@ namespace FinishLine
             cmbBxCountryAdd.DataSource = new BindingSource(_stateManager.GetDictionaryOFStates(), null);
             cmbBxCountryAdd.DisplayMember = "Value";
             cmbBxCountryAdd.ValueMember = "Key";
+
 
 
             cmbBxCountryEdit.DataSource = new BindingSource(_stateManager.GetDictionaryOFStates(), null);
@@ -60,7 +69,9 @@ namespace FinishLine
 
         private void bttn_AddRunnerWithGeneratedId_Click(object sender, EventArgs e)
         {
-            if (!txtBxRunnerNameAdd.Text.Equals(string.Empty))
+            if (!txtBxRunnerNameAdd.Text.Equals(string.Empty) &&
+                cmbBxSexAdd.SelectedValue.ToString() != Gender.Unknown.ToString() &&
+                (int)cmbBxCountryAdd.SelectedValue != 0)
             {
                 _runnerManager.AddRunnerToList(new Runner(
                     txtBxRunnerNameAdd.Text,
@@ -69,7 +80,8 @@ namespace FinishLine
                     (Gender)Enum.Parse(typeof(Gender), cmbBxSexAdd.SelectedValue.ToString()
                     )));
 
-                dtGrdRegisteredRunnersVw.Update();
+                dtGrdRegisteredRunnersVw.Rows.Clear();
+                PopulateDataGrid();
             }
             else
             {
@@ -78,7 +90,7 @@ namespace FinishLine
             }
         }
 
-        private void com(object sender, EventArgs e)
+        private void cmbBxCountryAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

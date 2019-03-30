@@ -5,6 +5,6 @@ namespace FinishLine.Core.Repository
 {
     public interface IRunnerRepository
     {
-        Dictionary<int, Runner> GetListOFRunners();
+        Dictionary<int, Runner> GetDictionaryOFRunners();
     }
 }

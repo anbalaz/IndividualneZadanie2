@@ -8,7 +8,7 @@ namespace FinishLine.Core
     public class RunnerManager
     {
         private IRunnerRepository _runnerRepository;
-        public readonly Dictionary<int, Runner> _runnersDirectory;
+        private readonly Dictionary<int, Runner> _runnersDirectory;
         private static int _keyId = 1;
         private const int KEY_MINIMUM_VALUE = 1;
         private const int KEY_MAXIMUM_VALUE = 999;
@@ -17,8 +17,13 @@ namespace FinishLine.Core
         public RunnerManager(IRunnerRepository runnerRepository)
         {
             _runnerRepository = runnerRepository;
-            _runnersDirectory = runnerRepository.GetListOFRunners();
+            _runnersDirectory = runnerRepository.GetDictionaryOFRunners();
             _keyId = _runnersDirectory.Keys.Max();
+        }
+
+        public Dictionary<int, Runner> GetDictionaryOFRunners()
+        {
+            return _runnersDirectory;
         }
 
         public void RemoveRunnerFromDirectory(int key)

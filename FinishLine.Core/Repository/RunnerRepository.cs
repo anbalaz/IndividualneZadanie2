@@ -23,7 +23,7 @@ namespace FinishLine.Core.Repository
             runMTFCKR.Add(999, new Runner("Viera Balazka", 100, 28, Gender.Woman));
         }
 
-        public Dictionary<int, Runner> GetListOFRunners()
+        public Dictionary<int, Runner> GetDictionaryOFRunners()
         {
             return runMTFCKR;
         }

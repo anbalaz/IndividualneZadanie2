@@ -36,42 +36,42 @@
             this.bttnAddRunnerWithCustomId = new System.Windows.Forms.Button();
             this.lblTitleOfRunnerstable = new System.Windows.Forms.Label();
             this.grpBxAddingRunner = new System.Windows.Forms.GroupBox();
-            this.lblNameRunner = new System.Windows.Forms.Label();
-            this.lblCountryRunner = new System.Windows.Forms.Label();
-            this.lblAgeRunner = new System.Windows.Forms.Label();
-            this.lblSexRunner = new System.Windows.Forms.Label();
+            this.nmrcUpDwnNumberAdd = new System.Windows.Forms.NumericUpDown();
+            this.nmrcUpDwnAgeAdd = new System.Windows.Forms.NumericUpDown();
             this.lblNumberRunner = new System.Windows.Forms.Label();
+            this.lblSexRunner = new System.Windows.Forms.Label();
+            this.lblAgeRunner = new System.Windows.Forms.Label();
+            this.lblCountryRunner = new System.Windows.Forms.Label();
+            this.lblNameRunner = new System.Windows.Forms.Label();
             this.grpBxEditRunner = new System.Windows.Forms.GroupBox();
+            this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
+            this.nmrcUpDwnPickNumberToEdit = new System.Windows.Forms.NumericUpDown();
+            this.lblNumberRunnerEdit = new System.Windows.Forms.Label();
+            this.lblTypeNumberOfRunnerToEdit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtBxRunnerNameEdit = new System.Windows.Forms.TextBox();
             this.bttnOkNumberEdit = new System.Windows.Forms.Button();
+            this.txtBxRunnerNameEdit = new System.Windows.Forms.TextBox();
             this.cmbBxCountryEdit = new System.Windows.Forms.ComboBox();
             this.nmrcUpDwnAgeEdit = new System.Windows.Forms.NumericUpDown();
             this.bttnOkRunnerEdit = new System.Windows.Forms.Button();
             this.cmbBxSexEdit = new System.Windows.Forms.ComboBox();
-            this.lblTypeNumberOfRunnerToEdit = new System.Windows.Forms.Label();
-            this.lblNumberRunnerEdit = new System.Windows.Forms.Label();
             this.grpBxDeleteRunner = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.bttnOkRunnerDelete = new System.Windows.Forms.Button();
             this.nmrcUpDwnNumberDelete = new System.Windows.Forms.NumericUpDown();
-            this.nmrcUpDwnPickNumberToEdit = new System.Windows.Forms.NumericUpDown();
-            this.nmrcUpDwnAgeAdd = new System.Windows.Forms.NumericUpDown();
-            this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
-            this.nmrcUpDwnNumberAdd = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).BeginInit();
             this.grpBxAddingRunner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).BeginInit();
             this.grpBxEditRunner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeEdit)).BeginInit();
             this.grpBxDeleteRunner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // dtGrdRegisteredRunnersVw
@@ -101,7 +101,6 @@
             this.txtBxRunnerNameAdd.Name = "txtBxRunnerNameAdd";
             this.txtBxRunnerNameAdd.Size = new System.Drawing.Size(100, 20);
             this.txtBxRunnerNameAdd.TabIndex = 2;
-            this.txtBxRunnerNameAdd.Click += new System.EventHandler(this.com);
             // 
             // cmbBxCountryAdd
             // 
@@ -110,6 +109,7 @@
             this.cmbBxCountryAdd.Name = "cmbBxCountryAdd";
             this.cmbBxCountryAdd.Size = new System.Drawing.Size(121, 21);
             this.cmbBxCountryAdd.TabIndex = 3;
+            this.cmbBxCountryAdd.SelectedIndexChanged += new System.EventHandler(this.cmbBxCountryAdd_SelectedIndexChanged);
             // 
             // cmbBxSexAdd
             // 
@@ -159,32 +159,58 @@
             this.grpBxAddingRunner.TabStop = false;
             this.grpBxAddingRunner.Text = "Add runner for race";
             // 
-            // lblNameRunner
+            // nmrcUpDwnNumberAdd
             // 
-            this.lblNameRunner.AutoSize = true;
-            this.lblNameRunner.Location = new System.Drawing.Point(13, 19);
-            this.lblNameRunner.Name = "lblNameRunner";
-            this.lblNameRunner.Size = new System.Drawing.Size(35, 13);
-            this.lblNameRunner.TabIndex = 8;
-            this.lblNameRunner.Text = "Name";
+            this.nmrcUpDwnNumberAdd.Location = new System.Drawing.Point(371, 62);
+            this.nmrcUpDwnNumberAdd.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberAdd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberAdd.Name = "nmrcUpDwnNumberAdd";
+            this.nmrcUpDwnNumberAdd.Size = new System.Drawing.Size(58, 20);
+            this.nmrcUpDwnNumberAdd.TabIndex = 15;
+            this.nmrcUpDwnNumberAdd.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // lblCountryRunner
+            // nmrcUpDwnAgeAdd
             // 
-            this.lblCountryRunner.AutoSize = true;
-            this.lblCountryRunner.Location = new System.Drawing.Point(118, 18);
-            this.lblCountryRunner.Name = "lblCountryRunner";
-            this.lblCountryRunner.Size = new System.Drawing.Size(43, 13);
-            this.lblCountryRunner.TabIndex = 9;
-            this.lblCountryRunner.Text = "Country";
+            this.nmrcUpDwnAgeAdd.Location = new System.Drawing.Point(244, 34);
+            this.nmrcUpDwnAgeAdd.Maximum = new decimal(new int[] {
+            110,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnAgeAdd.Minimum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnAgeAdd.Name = "nmrcUpDwnAgeAdd";
+            this.nmrcUpDwnAgeAdd.Size = new System.Drawing.Size(58, 20);
+            this.nmrcUpDwnAgeAdd.TabIndex = 15;
+            this.nmrcUpDwnAgeAdd.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             // 
-            // lblAgeRunner
+            // lblNumberRunner
             // 
-            this.lblAgeRunner.AutoSize = true;
-            this.lblAgeRunner.Location = new System.Drawing.Point(250, 18);
-            this.lblAgeRunner.Name = "lblAgeRunner";
-            this.lblAgeRunner.Size = new System.Drawing.Size(26, 13);
-            this.lblAgeRunner.TabIndex = 10;
-            this.lblAgeRunner.Text = "Age";
+            this.lblNumberRunner.AutoSize = true;
+            this.lblNumberRunner.Location = new System.Drawing.Point(242, 69);
+            this.lblNumberRunner.Name = "lblNumberRunner";
+            this.lblNumberRunner.Size = new System.Drawing.Size(123, 13);
+            this.lblNumberRunner.TabIndex = 12;
+            this.lblNumberRunner.Text = "Number runner (optional)";
             // 
             // lblSexRunner
             // 
@@ -195,14 +221,32 @@
             this.lblSexRunner.TabIndex = 11;
             this.lblSexRunner.Text = "Sex";
             // 
-            // lblNumberRunner
+            // lblAgeRunner
             // 
-            this.lblNumberRunner.AutoSize = true;
-            this.lblNumberRunner.Location = new System.Drawing.Point(242, 69);
-            this.lblNumberRunner.Name = "lblNumberRunner";
-            this.lblNumberRunner.Size = new System.Drawing.Size(123, 13);
-            this.lblNumberRunner.TabIndex = 12;
-            this.lblNumberRunner.Text = "Number runner (optional)";
+            this.lblAgeRunner.AutoSize = true;
+            this.lblAgeRunner.Location = new System.Drawing.Point(250, 18);
+            this.lblAgeRunner.Name = "lblAgeRunner";
+            this.lblAgeRunner.Size = new System.Drawing.Size(26, 13);
+            this.lblAgeRunner.TabIndex = 10;
+            this.lblAgeRunner.Text = "Age";
+            // 
+            // lblCountryRunner
+            // 
+            this.lblCountryRunner.AutoSize = true;
+            this.lblCountryRunner.Location = new System.Drawing.Point(118, 18);
+            this.lblCountryRunner.Name = "lblCountryRunner";
+            this.lblCountryRunner.Size = new System.Drawing.Size(43, 13);
+            this.lblCountryRunner.TabIndex = 9;
+            this.lblCountryRunner.Text = "Country";
+            // 
+            // lblNameRunner
+            // 
+            this.lblNameRunner.AutoSize = true;
+            this.lblNameRunner.Location = new System.Drawing.Point(13, 19);
+            this.lblNameRunner.Name = "lblNameRunner";
+            this.lblNameRunner.Size = new System.Drawing.Size(35, 13);
+            this.lblNameRunner.TabIndex = 8;
+            this.lblNameRunner.Text = "Name";
             // 
             // grpBxEditRunner
             // 
@@ -226,6 +270,68 @@
             this.grpBxEditRunner.TabIndex = 13;
             this.grpBxEditRunner.TabStop = false;
             this.grpBxEditRunner.Text = "Edit Runner";
+            // 
+            // nmrcUpDwnNumberEdit
+            // 
+            this.nmrcUpDwnNumberEdit.Location = new System.Drawing.Point(435, 72);
+            this.nmrcUpDwnNumberEdit.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberEdit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberEdit.Name = "nmrcUpDwnNumberEdit";
+            this.nmrcUpDwnNumberEdit.Size = new System.Drawing.Size(58, 20);
+            this.nmrcUpDwnNumberEdit.TabIndex = 13;
+            this.nmrcUpDwnNumberEdit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nmrcUpDwnPickNumberToEdit
+            // 
+            this.nmrcUpDwnPickNumberToEdit.Location = new System.Drawing.Point(9, 33);
+            this.nmrcUpDwnPickNumberToEdit.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnPickNumberToEdit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnPickNumberToEdit.Name = "nmrcUpDwnPickNumberToEdit";
+            this.nmrcUpDwnPickNumberToEdit.Size = new System.Drawing.Size(58, 20);
+            this.nmrcUpDwnPickNumberToEdit.TabIndex = 13;
+            this.nmrcUpDwnPickNumberToEdit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblNumberRunnerEdit
+            // 
+            this.lblNumberRunnerEdit.AutoSize = true;
+            this.lblNumberRunnerEdit.Location = new System.Drawing.Point(432, 56);
+            this.lblNumberRunnerEdit.Name = "lblNumberRunnerEdit";
+            this.lblNumberRunnerEdit.Size = new System.Drawing.Size(44, 13);
+            this.lblNumberRunnerEdit.TabIndex = 14;
+            this.lblNumberRunnerEdit.Text = "Number";
+            // 
+            // lblTypeNumberOfRunnerToEdit
+            // 
+            this.lblTypeNumberOfRunnerToEdit.AutoSize = true;
+            this.lblTypeNumberOfRunnerToEdit.Location = new System.Drawing.Point(6, 14);
+            this.lblTypeNumberOfRunnerToEdit.Name = "lblTypeNumberOfRunnerToEdit";
+            this.lblTypeNumberOfRunnerToEdit.Size = new System.Drawing.Size(210, 13);
+            this.lblTypeNumberOfRunnerToEdit.TabIndex = 12;
+            this.lblTypeNumberOfRunnerToEdit.Text = "Type number of runner to edit and press ok";
             // 
             // label2
             // 
@@ -263,13 +369,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Name";
             // 
-            // txtBxRunnerNameEdit
-            // 
-            this.txtBxRunnerNameEdit.Location = new System.Drawing.Point(6, 74);
-            this.txtBxRunnerNameEdit.Name = "txtBxRunnerNameEdit";
-            this.txtBxRunnerNameEdit.Size = new System.Drawing.Size(100, 20);
-            this.txtBxRunnerNameEdit.TabIndex = 2;
-            // 
             // bttnOkNumberEdit
             // 
             this.bttnOkNumberEdit.Location = new System.Drawing.Point(85, 30);
@@ -278,6 +377,13 @@
             this.bttnOkNumberEdit.TabIndex = 7;
             this.bttnOkNumberEdit.Text = "OK";
             this.bttnOkNumberEdit.UseVisualStyleBackColor = true;
+            // 
+            // txtBxRunnerNameEdit
+            // 
+            this.txtBxRunnerNameEdit.Location = new System.Drawing.Point(6, 74);
+            this.txtBxRunnerNameEdit.Name = "txtBxRunnerNameEdit";
+            this.txtBxRunnerNameEdit.Size = new System.Drawing.Size(100, 20);
+            this.txtBxRunnerNameEdit.TabIndex = 2;
             // 
             // cmbBxCountryEdit
             // 
@@ -325,24 +431,6 @@
             this.cmbBxSexEdit.Name = "cmbBxSexEdit";
             this.cmbBxSexEdit.Size = new System.Drawing.Size(121, 21);
             this.cmbBxSexEdit.TabIndex = 5;
-            // 
-            // lblTypeNumberOfRunnerToEdit
-            // 
-            this.lblTypeNumberOfRunnerToEdit.AutoSize = true;
-            this.lblTypeNumberOfRunnerToEdit.Location = new System.Drawing.Point(6, 14);
-            this.lblTypeNumberOfRunnerToEdit.Name = "lblTypeNumberOfRunnerToEdit";
-            this.lblTypeNumberOfRunnerToEdit.Size = new System.Drawing.Size(210, 13);
-            this.lblTypeNumberOfRunnerToEdit.TabIndex = 12;
-            this.lblTypeNumberOfRunnerToEdit.Text = "Type number of runner to edit and press ok";
-            // 
-            // lblNumberRunnerEdit
-            // 
-            this.lblNumberRunnerEdit.AutoSize = true;
-            this.lblNumberRunnerEdit.Location = new System.Drawing.Point(432, 56);
-            this.lblNumberRunnerEdit.Name = "lblNumberRunnerEdit";
-            this.lblNumberRunnerEdit.Size = new System.Drawing.Size(44, 13);
-            this.lblNumberRunnerEdit.TabIndex = 14;
-            this.lblNumberRunnerEdit.Text = "Number";
             // 
             // grpBxDeleteRunner
             // 
@@ -396,94 +484,6 @@
             0,
             0});
             // 
-            // nmrcUpDwnPickNumberToEdit
-            // 
-            this.nmrcUpDwnPickNumberToEdit.Location = new System.Drawing.Point(9, 33);
-            this.nmrcUpDwnPickNumberToEdit.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnPickNumberToEdit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnPickNumberToEdit.Name = "nmrcUpDwnPickNumberToEdit";
-            this.nmrcUpDwnPickNumberToEdit.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnPickNumberToEdit.TabIndex = 13;
-            this.nmrcUpDwnPickNumberToEdit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nmrcUpDwnAgeAdd
-            // 
-            this.nmrcUpDwnAgeAdd.Location = new System.Drawing.Point(244, 34);
-            this.nmrcUpDwnAgeAdd.Maximum = new decimal(new int[] {
-            110,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnAgeAdd.Minimum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnAgeAdd.Name = "nmrcUpDwnAgeAdd";
-            this.nmrcUpDwnAgeAdd.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnAgeAdd.TabIndex = 15;
-            this.nmrcUpDwnAgeAdd.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            // 
-            // nmrcUpDwnNumberEdit
-            // 
-            this.nmrcUpDwnNumberEdit.Location = new System.Drawing.Point(435, 72);
-            this.nmrcUpDwnNumberEdit.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Name = "nmrcUpDwnNumberEdit";
-            this.nmrcUpDwnNumberEdit.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnNumberEdit.TabIndex = 13;
-            this.nmrcUpDwnNumberEdit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nmrcUpDwnNumberAdd
-            // 
-            this.nmrcUpDwnNumberAdd.Location = new System.Drawing.Point(371, 62);
-            this.nmrcUpDwnNumberAdd.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberAdd.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberAdd.Name = "nmrcUpDwnNumberAdd";
-            this.nmrcUpDwnNumberAdd.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnNumberAdd.TabIndex = 15;
-            this.nmrcUpDwnNumberAdd.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,16 +499,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).EndInit();
             this.grpBxAddingRunner.ResumeLayout(false);
             this.grpBxAddingRunner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).EndInit();
             this.grpBxEditRunner.ResumeLayout(false);
             this.grpBxEditRunner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeEdit)).EndInit();
             this.grpBxDeleteRunner.ResumeLayout(false);
             this.grpBxDeleteRunner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

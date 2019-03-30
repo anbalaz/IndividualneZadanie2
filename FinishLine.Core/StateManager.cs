@@ -1,6 +1,7 @@
 ﻿using FinishLine.Core.Model;
 using FinishLine.Core.Repository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FinishLine.Core
 {
@@ -24,5 +25,6 @@ namespace FinishLine.Core
         {
             return _stateDictionary[key];
         }
+       
     }
 }
