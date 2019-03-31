@@ -47,5 +47,16 @@ namespace FinishLine
 
 
         }
+
+        private void dataGridViewGrouper1_DisplayGroup(object sender, Subro.Controls.GroupDisplayEventArgs e)
+        {
+
+        }
+
+        private void bttnStartTheRace_Click(object sender, EventArgs e)
+        {
+            lblRaceStartTime.Text = DateTime.Now.ToString();
+            bttnStartTheRace.Enabled = false;
+        }
     }
 }
