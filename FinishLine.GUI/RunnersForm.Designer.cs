@@ -1,6 +1,6 @@
 ﻿namespace FinishLine
 {
-    partial class Form2
+    partial class RunnersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,6 +62,7 @@
             this.bttnOkRunnerDelete = new System.Windows.Forms.Button();
             this.nmrcUpDwnNumberDelete = new System.Windows.Forms.NumericUpDown();
             this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
+            this.bttnContinue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).BeginInit();
             this.grpBxAddingRunner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).BeginInit();
@@ -78,7 +79,7 @@
             // 
             this.dtGrdRegisteredRunnersVw.AllowUserToAddRows = false;
             this.dtGrdRegisteredRunnersVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdRegisteredRunnersVw.Location = new System.Drawing.Point(73, 51);
+            this.dtGrdRegisteredRunnersVw.Location = new System.Drawing.Point(71, 37);
             this.dtGrdRegisteredRunnersVw.Name = "dtGrdRegisteredRunnersVw";
             this.dtGrdRegisteredRunnersVw.ReadOnly = true;
             this.dtGrdRegisteredRunnersVw.Size = new System.Drawing.Size(582, 237);
@@ -133,7 +134,7 @@
             // 
             this.lblTitleOfRunnerstable.AutoSize = true;
             this.lblTitleOfRunnerstable.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblTitleOfRunnerstable.Location = new System.Drawing.Point(68, 23);
+            this.lblTitleOfRunnerstable.Location = new System.Drawing.Point(66, 9);
             this.lblTitleOfRunnerstable.Name = "lblTitleOfRunnerstable";
             this.lblTitleOfRunnerstable.Size = new System.Drawing.Size(301, 25);
             this.lblTitleOfRunnerstable.TabIndex = 8;
@@ -153,7 +154,7 @@
             this.grpBxAddingRunner.Controls.Add(this.cmbBxCountryAdd);
             this.grpBxAddingRunner.Controls.Add(this.bttnAddRunnerWithGeneratedId);
             this.grpBxAddingRunner.Controls.Add(this.cmbBxSexAdd);
-            this.grpBxAddingRunner.Location = new System.Drawing.Point(73, 294);
+            this.grpBxAddingRunner.Location = new System.Drawing.Point(71, 280);
             this.grpBxAddingRunner.Name = "grpBxAddingRunner";
             this.grpBxAddingRunner.Size = new System.Drawing.Size(582, 91);
             this.grpBxAddingRunner.TabIndex = 9;
@@ -265,7 +266,7 @@
             this.grpBxEditRunner.Controls.Add(this.nmrcUpDwnAgeEdit);
             this.grpBxEditRunner.Controls.Add(this.bttnOkRunnerEdit);
             this.grpBxEditRunner.Controls.Add(this.cmbBxSexEdit);
-            this.grpBxEditRunner.Location = new System.Drawing.Point(73, 400);
+            this.grpBxEditRunner.Location = new System.Drawing.Point(71, 386);
             this.grpBxEditRunner.Name = "grpBxEditRunner";
             this.grpBxEditRunner.Size = new System.Drawing.Size(582, 108);
             this.grpBxEditRunner.TabIndex = 13;
@@ -418,7 +419,7 @@
             this.grpBxDeleteRunner.Controls.Add(this.label6);
             this.grpBxDeleteRunner.Controls.Add(this.bttnOkRunnerDelete);
             this.grpBxDeleteRunner.Controls.Add(this.nmrcUpDwnNumberDelete);
-            this.grpBxDeleteRunner.Location = new System.Drawing.Point(73, 514);
+            this.grpBxDeleteRunner.Location = new System.Drawing.Point(71, 500);
             this.grpBxDeleteRunner.Name = "grpBxDeleteRunner";
             this.grpBxDeleteRunner.Size = new System.Drawing.Size(582, 80);
             this.grpBxDeleteRunner.TabIndex = 15;
@@ -488,18 +489,30 @@
             0,
             0});
             // 
-            // Form2
+            // bttnContinue
+            // 
+            this.bttnContinue.Location = new System.Drawing.Point(578, 586);
+            this.bttnContinue.Name = "bttnContinue";
+            this.bttnContinue.Size = new System.Drawing.Size(75, 23);
+            this.bttnContinue.TabIndex = 16;
+            this.bttnContinue.Text = "Continue";
+            this.bttnContinue.UseVisualStyleBackColor = true;
+            this.bttnContinue.Click += new System.EventHandler(this.bttnContinue_Click);
+            // 
+            // RunnersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 639);
+            this.ClientSize = new System.Drawing.Size(714, 628);
+            this.ControlBox = false;
+            this.Controls.Add(this.bttnContinue);
             this.Controls.Add(this.grpBxDeleteRunner);
             this.Controls.Add(this.grpBxEditRunner);
             this.Controls.Add(this.lblTitleOfRunnerstable);
             this.Controls.Add(this.dtGrdRegisteredRunnersVw);
             this.Controls.Add(this.grpBxAddingRunner);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "RunnersForm";
+            this.Text = "Runners registration";
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).EndInit();
             this.grpBxAddingRunner.ResumeLayout(false);
             this.grpBxAddingRunner.PerformLayout();
@@ -554,5 +567,6 @@
         private System.Windows.Forms.NumericUpDown nmrcUpDwnAgeAdd;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnPickNumberToEdit;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberEdit;
+        private System.Windows.Forms.Button bttnContinue;
     }
 }

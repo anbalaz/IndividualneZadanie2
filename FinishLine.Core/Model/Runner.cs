@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace FinishLine.Core.Model
 {
@@ -8,6 +9,8 @@ namespace FinishLine.Core.Model
         public int StateOfOrigin { get; set; }
         public int Age { get; set; }
         public Gender Sex { get; set; }
+        public bool IsOutOfRace { get; set; }
+        private List<int> _finishedLapTimeInSeconds = new List<int>();
 
         public Runner(string name, int stateOfOrigin, int age, Gender sex)
         {
@@ -15,6 +18,16 @@ namespace FinishLine.Core.Model
             StateOfOrigin = stateOfOrigin;
             Age = age;
             Sex = sex;
+        }
+
+        public void AddLapTime(int time)
+        {
+            _finishedLapTimeInSeconds.Add(time);
+        }
+
+        public int GetLapsCount()
+        {
+            return _finishedLapTimeInSeconds.Count;
         }
 
         public override string ToString()

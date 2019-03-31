@@ -32,7 +32,7 @@ namespace FinishLine
             //runnerManager.AddRunnerToList(new Runner("Jozino",20,20,Gender.Unknown));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(runnerManager, stateManager));
+            Application.Run(new MainForm(runnerManager, stateManager));
         }
     }
 }

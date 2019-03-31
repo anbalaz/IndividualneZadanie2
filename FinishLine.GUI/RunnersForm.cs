@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace FinishLine
 {
-    public partial class Form2 : Form
+    public partial class RunnersForm : Form
     {
         private RunnerManager _runnerManager;
         private StateManager _stateManager;
 
-        public Form2(RunnerManager runnerManager, StateManager stateManager)
+        public RunnersForm(RunnerManager runnerManager, StateManager stateManager)
         {
             InitializeComponent();
 
@@ -195,6 +195,11 @@ namespace FinishLine
             {
                 MessageBox.Show("There is no such runner with that number");
             }
+        }
+
+        private void bttnContinue_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
