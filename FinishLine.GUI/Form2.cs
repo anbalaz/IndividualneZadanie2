@@ -20,6 +20,7 @@ namespace FinishLine
             PopulateDataGrid();
             InitCountrycmbx();
             InitSex();
+            EditbuttonsAvailable(false);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -85,7 +86,7 @@ namespace FinishLine
             }
             else
             {
-                MessageBox.Show("Please select a value");
+                MessageBox.Show("Please check if you selected all values");
                 return;
             }
         }
@@ -93,6 +94,107 @@ namespace FinishLine
         private void cmbBxCountryAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bttnAddRunnerWithCustomId_Click(object sender, EventArgs e)
+        {
+            if (!txtBxRunnerNameAdd.Text.Equals(string.Empty) &&
+                cmbBxSexAdd.SelectedValue.ToString() != Gender.Unknown.ToString() &&
+                (int)cmbBxCountryAdd.SelectedValue != 0)
+            {
+
+                if (_runnerManager.IsKeyIdFree((int)nmrcUpDwnNumberAdd.Value))
+                {
+                    _runnerManager.AddRunnerToList((int)nmrcUpDwnNumberAdd.Value, new Runner(
+                    txtBxRunnerNameAdd.Text,
+                    (int)cmbBxCountryAdd.SelectedValue,
+                    (int)nmrcUpDwnAgeAdd.Value,
+                    (Gender)Enum.Parse(typeof(Gender), cmbBxSexAdd.SelectedValue.ToString()
+                    )));
+
+                    dtGrdRegisteredRunnersVw.Rows.Clear();
+                    PopulateDataGrid();
+                }
+                else
+                {
+                    MessageBox.Show("The Number is already in use");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please check if you selected all values");
+            }
+        }
+
+        private void bttnOkNumberEdit_Click(object sender, EventArgs e)
+        {
+            if (!_runnerManager.IsKeyIdFree((int)nmrcUpDwnPickNumberToEdit.Value))
+            {
+                EditbuttonsAvailable(true);
+                bttnOkNumberEdit.Enabled = false;
+                nmrcUpDwnPickNumberToEdit.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("There is no such runner with that number");
+            }
+        }
+
+        private void EditbuttonsAvailable(bool areTheyAvailable)
+        {
+            txtBxRunnerNameEdit.Enabled = areTheyAvailable;
+            cmbBxCountryEdit.Enabled = areTheyAvailable;
+            nmrcUpDwnAgeEdit.Enabled = areTheyAvailable;
+            cmbBxSexEdit.Enabled = areTheyAvailable;
+            nmrcUpDwnNumberEdit.Enabled = areTheyAvailable;
+            bttnOkRunnerEdit.Enabled = areTheyAvailable;
+        }
+
+        private void bttnOkRunnerEdit_Click(object sender, EventArgs e)
+        {
+            if (!txtBxRunnerNameEdit.Text.Equals(string.Empty) &&
+               cmbBxSexEdit.SelectedValue.ToString() != Gender.Unknown.ToString() &&
+               (int)cmbBxCountryEdit.SelectedValue != 0)
+            {
+
+                _runnerManager.GetDictionaryOFRunners()[(int)nmrcUpDwnPickNumberToEdit.Value] = new Runner(txtBxRunnerNameEdit.Text,
+                    (int)cmbBxCountryEdit.SelectedValue,
+                    (int)nmrcUpDwnAgeEdit.Value,
+                    (Gender)Enum.Parse(typeof(Gender), cmbBxSexEdit.SelectedValue.ToString()));
+
+                dtGrdRegisteredRunnersVw.Rows.Clear();
+                PopulateDataGrid();
+                EditbuttonsAvailable(false);
+                bttnOkNumberEdit.Enabled = true;
+                nmrcUpDwnPickNumberToEdit.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Please check if you selected all values");
+            }
+        }
+
+        private void bttnOkRunnerDelete_Click(object sender, EventArgs e)
+        {
+            if (!_runnerManager.IsKeyIdFree((int)nmrcUpDwnNumberDelete.Value))
+            {
+                string message = "Do you want to delete this runner?";
+                string title = "Delete Runner";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    _runnerManager.RemoveRunnerFromDirectory((int)nmrcUpDwnNumberDelete.Value);
+                    dtGrdRegisteredRunnersVw.Rows.Clear();
+                    PopulateDataGrid();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("There is no such runner with that number");
+            }
         }
     }
 }

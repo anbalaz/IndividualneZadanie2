@@ -75,7 +75,7 @@ namespace FinishLine.Core
             return 0;
         }
 
-        public bool IsKeyIdValid(int keyId)
+        public bool IsKeyIdFree(int keyId)
         {
             bool ret = false;
             if (!_runnersDirectory.ContainsKey(keyId) && keyId >= KEY_MINIMUM_VALUE && keyId <= KEY_MAXIMUM_VALUE)

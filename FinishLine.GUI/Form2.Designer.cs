@@ -44,7 +44,6 @@
             this.lblCountryRunner = new System.Windows.Forms.Label();
             this.lblNameRunner = new System.Windows.Forms.Label();
             this.grpBxEditRunner = new System.Windows.Forms.GroupBox();
-            this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
             this.nmrcUpDwnPickNumberToEdit = new System.Windows.Forms.NumericUpDown();
             this.lblNumberRunnerEdit = new System.Windows.Forms.Label();
             this.lblTypeNumberOfRunnerToEdit = new System.Windows.Forms.Label();
@@ -62,16 +61,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.bttnOkRunnerDelete = new System.Windows.Forms.Button();
             this.nmrcUpDwnNumberDelete = new System.Windows.Forms.NumericUpDown();
+            this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).BeginInit();
             this.grpBxAddingRunner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).BeginInit();
             this.grpBxEditRunner.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeEdit)).BeginInit();
             this.grpBxDeleteRunner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // dtGrdRegisteredRunnersVw
@@ -127,6 +127,7 @@
             this.bttnAddRunnerWithCustomId.TabIndex = 7;
             this.bttnAddRunnerWithCustomId.Text = "Add Runner with number";
             this.bttnAddRunnerWithCustomId.UseVisualStyleBackColor = true;
+            this.bttnAddRunnerWithCustomId.Click += new System.EventHandler(this.bttnAddRunnerWithCustomId_Click);
             // 
             // lblTitleOfRunnerstable
             // 
@@ -271,28 +272,6 @@
             this.grpBxEditRunner.TabStop = false;
             this.grpBxEditRunner.Text = "Edit Runner";
             // 
-            // nmrcUpDwnNumberEdit
-            // 
-            this.nmrcUpDwnNumberEdit.Location = new System.Drawing.Point(435, 72);
-            this.nmrcUpDwnNumberEdit.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Name = "nmrcUpDwnNumberEdit";
-            this.nmrcUpDwnNumberEdit.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnNumberEdit.TabIndex = 13;
-            this.nmrcUpDwnNumberEdit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // nmrcUpDwnPickNumberToEdit
             // 
             this.nmrcUpDwnPickNumberToEdit.Location = new System.Drawing.Point(9, 33);
@@ -377,6 +356,7 @@
             this.bttnOkNumberEdit.TabIndex = 7;
             this.bttnOkNumberEdit.Text = "OK";
             this.bttnOkNumberEdit.UseVisualStyleBackColor = true;
+            this.bttnOkNumberEdit.Click += new System.EventHandler(this.bttnOkNumberEdit_Click);
             // 
             // txtBxRunnerNameEdit
             // 
@@ -423,6 +403,7 @@
             this.bttnOkRunnerEdit.TabIndex = 1;
             this.bttnOkRunnerEdit.Text = "Edit Runner";
             this.bttnOkRunnerEdit.UseVisualStyleBackColor = true;
+            this.bttnOkRunnerEdit.Click += new System.EventHandler(this.bttnOkRunnerEdit_Click);
             // 
             // cmbBxSexEdit
             // 
@@ -461,6 +442,7 @@
             this.bttnOkRunnerDelete.TabIndex = 7;
             this.bttnOkRunnerDelete.Text = "OK";
             this.bttnOkRunnerDelete.UseVisualStyleBackColor = true;
+            this.bttnOkRunnerDelete.Click += new System.EventHandler(this.bttnOkRunnerDelete_Click);
             // 
             // nmrcUpDwnNumberDelete
             // 
@@ -479,6 +461,28 @@
             this.nmrcUpDwnNumberDelete.Size = new System.Drawing.Size(58, 20);
             this.nmrcUpDwnNumberDelete.TabIndex = 6;
             this.nmrcUpDwnNumberDelete.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nmrcUpDwnNumberEdit
+            // 
+            this.nmrcUpDwnNumberEdit.Location = new System.Drawing.Point(435, 72);
+            this.nmrcUpDwnNumberEdit.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberEdit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrcUpDwnNumberEdit.Name = "nmrcUpDwnNumberEdit";
+            this.nmrcUpDwnNumberEdit.Size = new System.Drawing.Size(58, 20);
+            this.nmrcUpDwnNumberEdit.TabIndex = 13;
+            this.nmrcUpDwnNumberEdit.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -503,12 +507,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeAdd)).EndInit();
             this.grpBxEditRunner.ResumeLayout(false);
             this.grpBxEditRunner.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnPickNumberToEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeEdit)).EndInit();
             this.grpBxDeleteRunner.ResumeLayout(false);
             this.grpBxDeleteRunner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,7 +552,7 @@
         private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberDelete;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberAdd;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnAgeAdd;
-        private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberEdit;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnPickNumberToEdit;
+        private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberEdit;
     }
 }
