@@ -5,13 +5,13 @@ namespace FinishLine.Core.Model
 {
     public class Race
     {
-        public int NumberofLaps { get; set; }
+        public int NumberOfLaps { get; set; }
         public decimal LengthOfLap { get; set; }
         public int NumberOfWinners { get; set; }
 
         public Race(int numberofLaps, decimal lengthOfLap, int numberOfWinners)
         {
-            NumberofLaps = numberofLaps;
+            NumberOfLaps = numberofLaps;
             LengthOfLap = lengthOfLap;
             NumberOfWinners = numberOfWinners;
         }
@@ -24,7 +24,7 @@ namespace FinishLine.Core.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{NumberofLaps}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{NumberOfLaps}{FileRepository.SEPARATOR_PROPERTIES}");
             sb.Append($"{LengthOfLap}{FileRepository.SEPARATOR_PROPERTIES}");
             sb.Append($"{NumberOfWinners}{FileRepository.SEPARATOR_PROPERTIES}");
           

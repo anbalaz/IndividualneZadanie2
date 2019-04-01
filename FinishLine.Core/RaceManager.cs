@@ -25,7 +25,7 @@ namespace FinishLine.Core
 
             foreach (var racer in _runnerRepository.GetDictionaryOFRunners())
             {
-                if (racer.Value.GetLapsCount() >= maximumLaps && !_winningDirectory.ContainsKey(racer.Key))
+                if (racer.Value.GetLapsCount() >= maximumLaps + 1 && !_winningDirectory.ContainsKey(racer.Key))
                 {
                     _winningDirectory.Add(racer.Key, racer.Value);
                     ret = true;

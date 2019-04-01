@@ -82,6 +82,15 @@ namespace FinishLine
             RunnerToolStripMenuItem.Enabled = false;
         }
 
+        private void AddLapToRunner(int keyInput)
+        {
+            _runnerManager.GetDictionaryOFRunners()[keyInput].AddLapTime(DateTime.Now);
+            dtGrdVwMainRaceForm.Rows.Add(
+                _runnerManager.KeyValueToString(keyInput),
+                DateTime.Now.ToString(),
+                _runnerManager.GetDictionaryOFRunners()[keyInput].CountDifferenceBetweenLaps().ToString());
+        }
+
         private void SaveFile()
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -124,7 +133,7 @@ namespace FinishLine
                         }
                         foreach (var runner in _runnerManager.GetDictionaryOFRunners())
                         {
-                            _raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberofLaps, runner.Key, runner.Value);
+                            _raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberOfLaps, runner.Key, runner.Value);
                         }
                         PopulateDtGrdVwFinishedRunners();
                     }
@@ -160,7 +169,7 @@ namespace FinishLine
             if (nmrcUpDwnNumberOfLaps.Value != 0 && nmrcUpDwnLengthOfLap.Value != 0 && nmrcUpDwnNumberOfWinners.Value != 0)
             {
 
-                race.NumberofLaps = (int)nmrcUpDwnNumberOfLaps.Value;
+                race.NumberOfLaps = (int)nmrcUpDwnNumberOfLaps.Value;
                 race.LengthOfLap = nmrcUpDwnLengthOfLap.Value;
                 race.NumberOfWinners = (int)nmrcUpDwnNumberOfWinners.Value;
 
@@ -181,20 +190,18 @@ namespace FinishLine
 
         private void bttnRunnerAddLap_Click(object sender, EventArgs e)
         {
-            if (!_runnerManager.IsKeyIdFree((int)nmercUpDwnRunnerAddLap.Value) &&
-                _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].IsOutOfRace == false)
+
+            int keyInput = (int)nmercUpDwnRunnerAddLap.Value;
+
+            if (!_runnerManager.IsKeyIdFree(keyInput) && _runnerManager.GetDictionaryOFRunners()[keyInput].IsOutOfRace == false)
             {
-                _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].AddLapTime(DateTime.Now);
-                dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString((int)nmercUpDwnRunnerAddLap.Value),
-                    DateTime.Now.ToString(),
-                _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].CountDifferenceBetweenLaps().ToString());
+                AddLapToRunner( keyInput);
 
-
-                if (_raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberofLaps,
-                    (int)nmercUpDwnRunnerAddLap.Value,
-                    _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value]))
+                if (_raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberOfLaps,
+                    keyInput,
+                    _runnerManager.GetDictionaryOFRunners()[keyInput]))
                 {
-                    _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].IsOutOfRace = true;
+                    _runnerManager.GetDictionaryOFRunners()[keyInput].IsOutOfRace = true;
                     dtGrdVwFinishedRunners.Rows.Clear();
                     PopulateDtGrdVwFinishedRunners();
                 }
