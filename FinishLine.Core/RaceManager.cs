@@ -1,37 +1,46 @@
 ﻿using FinishLine.Core.Model;
 using FinishLine.Core.Repository;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FinishLine.Core
 {
     public class RaceManager
     {
-        private readonly Dictionary<int, Runner> _runnersDirectory;
+        private readonly Dictionary<int, Runner> _winningDirectory=new Dictionary<int, Runner>();
+        private readonly IRunnerRepository _runnerRepository;
 
         public RaceManager(IRunnerRepository runnerRepository)
         {
-            _runnersDirectory = runnerRepository.GetDictionaryOFRunners();
+            _runnerRepository = runnerRepository;
         }
 
-        public bool IsTheRaceFinished(int maximumLaps, int maximumFinishers)
+        public bool IsTheRaceFinished(int maximumFinishers)
         {
-            int count = 0;
-            for (int i = 0; i < _runnersDirectory.Count; i++)
+            return _winningDirectory.Count >= maximumFinishers;
+        }
+
+        public void AddRunnerToWinningDirectory(int key, Runner runner)
+        {
+            if (!_winningDirectory.ContainsKey(key))
             {
-                if (_runnersDirectory[i].GetLapsCount() == maximumLaps)
+                _winningDirectory.Add(key, runner);
+            }
+        }
+
+        public void AddFinishedRunnerToWinningDirectory(int maximumLaps)
+        {
+            foreach (var runner in _runnerRepository.GetDictionaryOFRunners())
+            {
+                if (runner.Value.GetLapsCount() >= maximumLaps)
                 {
-                    count++;
+                    AddRunnerToWinningDirectory(runner.Key, runner.Value);
                 }
             }
-            return count >= maximumFinishers;
         }
 
-        public void RemoveRunnerFromRace(int keyRunner)
+        public Dictionary<int, Runner> GetWinningDirectory()
         {
-            _runnersDirectory.Remove(keyRunner);
+            return _winningDirectory;
         }
-
     }
 }

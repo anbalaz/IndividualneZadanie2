@@ -189,7 +189,6 @@ namespace FinishLine
                     dtGrdRegisteredRunnersVw.Rows.Clear();
                     PopulateDataGrid();
                 }
-
             }
             else
             {
