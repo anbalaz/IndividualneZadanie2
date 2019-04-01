@@ -28,6 +28,7 @@ namespace FinishLine
             bttnRunnerSteppingOut.Enabled = false;
             SetRowsToDatagrid();
             SetRowsToDtGrdVwFinishedRunners();
+            race = fileRepository.GetRace();
             form = new RunnersForm(_runnerManager, _stateManager);
         }
 
@@ -70,6 +71,17 @@ namespace FinishLine
             }
         }
 
+        private void SetBttnsAndTextAtStartRace()
+        {
+            nmrcUpDwnNumberOfLaps.Enabled = false;
+            nmrcUpDwnLengthOfLap.Enabled = false;
+            nmrcUpDwnNumberOfWinners.Enabled = false;
+            bttnStartTheRace.Enabled = false;
+            bttnRunnerAddLap.Enabled = true;
+            bttnRunnerSteppingOut.Enabled = true;
+            RunnerToolStripMenuItem.Enabled = false;
+        }
+
         private void SaveFile()
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -83,7 +95,7 @@ namespace FinishLine
                 {
 
                     MessageBox.Show("Could not save the file " + e.Message);
-                } 
+                }
 
             }
         }
@@ -99,10 +111,27 @@ namespace FinishLine
                     _runnerManager = new RunnerManager(_fileRepository);
                     _raceManager = new RaceManager(_fileRepository);
                     race = _fileRepository.GetRace();
+                    form = new RunnersForm(_runnerManager, _stateManager);
+                    if (race.LengthOfLap != 0)
+                    {
+                        SetBttnsAndTextAtStartRace();
+                        lblRaceStartTime.Text = _runnerManager.GetDictionaryOFRunners().Values.ElementAt(0).GetFinishedLapsTime()[0].ToString();
+
+                        foreach (var runner in _runnerManager.GetDictionaryOFRunners())
+                        {
+                            dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                                runner.Value.GetFinishedLapsTime().Last().ToString(), runner.Value.CountTimeTotal().ToString());
+                        }
+                        foreach (var runner in _runnerManager.GetDictionaryOFRunners())
+                        {
+                            _raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberofLaps, runner.Key, runner.Value);
+                        }
+                        PopulateDtGrdVwFinishedRunners();
+                    }
                 }
-                catch (Exception e)
+                catch (InvalidOperationException e)
                 {
-                    MessageBox.Show("Could not open the file "+e.Message);
+                    MessageBox.Show("Could not open the file " + e.Message);
                 }
             }
         }
@@ -130,16 +159,13 @@ namespace FinishLine
         {
             if (nmrcUpDwnNumberOfLaps.Value != 0 && nmrcUpDwnLengthOfLap.Value != 0 && nmrcUpDwnNumberOfWinners.Value != 0)
             {
-                nmrcUpDwnNumberOfLaps.Enabled = false;
-                nmrcUpDwnLengthOfLap.Enabled = false;
-                nmrcUpDwnNumberOfWinners.Enabled = false;
-                race = new Race((int)nmrcUpDwnNumberOfLaps.Value, nmrcUpDwnLengthOfLap.Value, (int)nmrcUpDwnNumberOfWinners.Value);
 
+                race.NumberofLaps = (int)nmrcUpDwnNumberOfLaps.Value;
+                race.LengthOfLap = nmrcUpDwnLengthOfLap.Value;
+                race.NumberOfWinners = (int)nmrcUpDwnNumberOfWinners.Value;
+
+                SetBttnsAndTextAtStartRace();
                 lblRaceStartTime.Text = DateTime.Now.ToString();
-                bttnStartTheRace.Enabled = false;
-                bttnRunnerAddLap.Enabled = true;
-                bttnRunnerSteppingOut.Enabled = true;
-                RunnerToolStripMenuItem.Enabled = false;
 
                 foreach (var runner in _runnerManager.GetDictionaryOFRunners())
                 {
@@ -200,5 +226,6 @@ namespace FinishLine
         {
             SaveFile();
         }
+
     }
 }

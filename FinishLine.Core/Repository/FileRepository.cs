@@ -51,14 +51,11 @@ namespace FinishLine.Core.Repository
         {
             string[] propertiesOfRunner = data.Split(SEPARATOR_PROPERTIES);
 
-            List<DateTime> listLapsTime = new List<DateTime>();
-
             int numberOfLaps = int.Parse(propertiesOfRunner[0]);
-
             decimal length = decimal.Parse(propertiesOfRunner[1]);
-            int age = int.Parse(propertiesOfRunner[2]);
+            int numberOfWiners = int.Parse(propertiesOfRunner[2]);
 
-            _race = new Race(numberOfLaps, length, numberOfLaps);
+            _race = new Race(numberOfLaps, length, numberOfWiners);
         }
 
         private List<string> GetStringFromData()

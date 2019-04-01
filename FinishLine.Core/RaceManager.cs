@@ -27,7 +27,7 @@ namespace FinishLine.Core
             {
                 if (racer.Value.GetLapsCount() >= maximumLaps && !_winningDirectory.ContainsKey(racer.Key))
                 {
-                    _winningDirectory.Add(key, runner);
+                    _winningDirectory.Add(racer.Key, racer.Value);
                     ret = true;
                 }
             }
