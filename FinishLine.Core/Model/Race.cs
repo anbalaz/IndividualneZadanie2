@@ -9,6 +9,11 @@ namespace FinishLine.Core.Model
         public decimal LengthOfLap { get; set; }
         public int NumberOfWinners { get; set; }
 
+        public Race()
+        {
+
+        }
+
         public Race(int numberofLaps, decimal lengthOfLap, int numberOfWinners)
         {
             NumberOfLaps = numberofLaps;
@@ -16,11 +21,9 @@ namespace FinishLine.Core.Model
             NumberOfWinners = numberOfWinners;
         }
 
-        public Race()
-        {
-                
-        }
-
+        /// <summary>
+        /// string is calibrated for saving in txt file
+        /// </summary>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

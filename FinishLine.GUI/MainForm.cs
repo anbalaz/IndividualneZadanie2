@@ -51,7 +51,7 @@ namespace FinishLine
             foreach (var runner in _runnerManager.GetDictionaryOFRunners())
             {
                 dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                    runner.Value.GetFinishedLapsTime().Last().ToString()
+                    runner.Value.GetFinishedLapsTimeList().Last().ToString()
                    );
             }
         }
@@ -61,7 +61,7 @@ namespace FinishLine
             foreach (var runner in _raceManager.GetWinningDirectory())
             {
                 dtGrdVwFinishedRunners.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                    runner.Value.GetFinishedLapsTime().Last().ToString(), runner.Value.CountTimeTotal().ToString());
+                    runner.Value.GetFinishedLapsTimeList().Last().ToString(), runner.Value.CountTimeTotal().ToString());
             }
             if (_raceManager.IsTheRaceFinished(race.NumberOfWinners))
             {
@@ -84,7 +84,7 @@ namespace FinishLine
 
         private void AddLapToRunner(int keyInput)
         {
-            _runnerManager.GetDictionaryOFRunners()[keyInput].AddLapTime(DateTime.Now);
+            _runnerManager.GetDictionaryOFRunners()[keyInput].AddLapTimeToList(DateTime.Now);
             dtGrdVwMainRaceForm.Rows.Add(
                 _runnerManager.KeyValueToString(keyInput),
                 DateTime.Now.ToString(),
@@ -123,13 +123,16 @@ namespace FinishLine
                     form = new RunnersForm(_runnerManager, _stateManager);
                     if (race.LengthOfLap != 0)
                     {
+                        nmrcUpDwnLengthOfLap.Text= race.LengthOfLap.ToString();
+                        nmrcUpDwnNumberOfLaps.Text = race.NumberOfLaps.ToString();
+                        nmrcUpDwnNumberOfWinners.Text = race.NumberOfWinners.ToString();
                         SetBttnsAndTextAtStartRace();
-                        lblRaceStartTime.Text = _runnerManager.GetDictionaryOFRunners().Values.ElementAt(0).GetFinishedLapsTime()[0].ToString();
+                        lblRaceStartTime.Text = _runnerManager.GetDictionaryOFRunners().Values.ElementAt(0).GetFinishedLapsTimeList()[0].ToString();
 
                         foreach (var runner in _runnerManager.GetDictionaryOFRunners())
                         {
                             dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                                runner.Value.GetFinishedLapsTime().Last().ToString(), runner.Value.CountTimeTotal().ToString());
+                                runner.Value.GetFinishedLapsTimeList().Last().ToString(), runner.Value.CountTimeTotal().ToString());
                         }
                         foreach (var runner in _runnerManager.GetDictionaryOFRunners())
                         {
@@ -143,6 +146,19 @@ namespace FinishLine
                     MessageBox.Show("Could not open the file " + e.Message);
                 }
             }
+        }
+
+        private bool IsThereStillRunner()
+        {
+            bool ret = false;
+            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
+            {
+                if (!runner.Value.IsOutOfRace)
+                {
+                    return true;
+                }
+            }
+            return ret;
         }
 
 
@@ -166,7 +182,10 @@ namespace FinishLine
 
         private void bttnStartTheRace_Click(object sender, EventArgs e)
         {
-            if (nmrcUpDwnNumberOfLaps.Value != 0 && nmrcUpDwnLengthOfLap.Value != 0 && nmrcUpDwnNumberOfWinners.Value != 0)
+            if (nmrcUpDwnNumberOfLaps.Value != 0 &&
+                nmrcUpDwnLengthOfLap.Value != 0 &&
+                nmrcUpDwnNumberOfWinners.Value != 0 &&
+                _runnerManager.GetDictionaryOFRunners().Count!=0)
             {
 
                 race.NumberOfLaps = (int)nmrcUpDwnNumberOfLaps.Value;
@@ -178,7 +197,7 @@ namespace FinishLine
 
                 foreach (var runner in _runnerManager.GetDictionaryOFRunners())
                 {
-                    runner.Value.AddLapTime(DateTime.Now);
+                    runner.Value.AddLapTimeToList(DateTime.Now);
                 }
                 PopulateDataGridStart();
             }
@@ -204,6 +223,7 @@ namespace FinishLine
                     _runnerManager.GetDictionaryOFRunners()[keyInput].IsOutOfRace = true;
                     dtGrdVwFinishedRunners.Rows.Clear();
                     PopulateDtGrdVwFinishedRunners();
+                    IsThereStillRunner();
                 }
             }
             else
@@ -233,6 +253,5 @@ namespace FinishLine
         {
             SaveFile();
         }
-
     }
 }

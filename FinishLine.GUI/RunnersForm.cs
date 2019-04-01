@@ -23,11 +23,6 @@ namespace FinishLine
             EditbuttonsAvailable(false);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void SetRowsToDatagrid()
         {
             dtGrdRegisteredRunnersVw.Columns.Add("Key", "NUMBER");
@@ -35,18 +30,6 @@ namespace FinishLine
             dtGrdRegisteredRunnersVw.Columns.Add("StateOfOrigin", "STATE");
             dtGrdRegisteredRunnersVw.Columns.Add("Age", "AGE");
             dtGrdRegisteredRunnersVw.Columns.Add("Sex", "SEX");
-        }
-
-        private void PopulateDataGrid()
-        {
-            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
-            {
-                dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                    runner.Value.Name,
-                    _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName,
-                    runner.Value.Age,
-                    runner.Value.Sex);
-            }
         }
 
         private void InitCountrycmbx()
@@ -67,6 +50,19 @@ namespace FinishLine
             cmbBxSexAdd.DataSource = Enum.GetValues(typeof(Gender));
             cmbBxSexEdit.DataSource = Enum.GetValues(typeof(Gender));
         }
+
+        private void PopulateDataGrid()
+        {
+            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
+            {
+                dtGrdRegisteredRunnersVw.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                    runner.Value.Name,
+                    _stateManager.GetStateBykey(runner.Value.StateOfOrigin).SlovakShortName,
+                    runner.Value.Age,
+                    runner.Value.Sex);
+            }
+        }
+
 
         private void bttn_AddRunnerWithGeneratedId_Click(object sender, EventArgs e)
         {
@@ -89,11 +85,6 @@ namespace FinishLine
                 MessageBox.Show("Please check if you selected all values");
                 return;
             }
-        }
-
-        private void cmbBxCountryAdd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void bttnAddRunnerWithCustomId_Click(object sender, EventArgs e)
@@ -147,7 +138,6 @@ namespace FinishLine
             cmbBxCountryEdit.Enabled = areTheyAvailable;
             nmrcUpDwnAgeEdit.Enabled = areTheyAvailable;
             cmbBxSexEdit.Enabled = areTheyAvailable;
-            nmrcUpDwnNumberEdit.Enabled = areTheyAvailable;
             bttnOkRunnerEdit.Enabled = areTheyAvailable;
         }
 

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace FinishLine.Core.Repository
 {
+
+    /// <summary>
+    /// Class used mostly for testing, now is obsolete
+    /// </summary>
     public class RunnerRepository : IFileRepository
     {
         private static Dictionary<int, Runner> runMTFCKR = new Dictionary<int, Runner>();

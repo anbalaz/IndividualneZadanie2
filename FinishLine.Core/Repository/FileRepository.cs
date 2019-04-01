@@ -17,10 +17,6 @@ namespace FinishLine.Core.Repository
         public const string SEPARATOR_END_LAPS = "}-";
         public const char SEPARATOR_LAPS = ',';
 
-        public FileRepository()
-        {
-            //_runnerDictionary = runnerRepository.GetDictionaryOFRunners();
-        }
 
         private void GetRunnerFormString(string data)
         {
@@ -72,11 +68,15 @@ namespace FinishLine.Core.Repository
             return retList;
         }
 
-        public void SaveDataToFile(String localDatabase)
+
+        /// <summary>
+        /// Saves  list of strings to one file, each line in text file represents one instance
+        /// </summary>
+        public void SaveDataToFile(String pathToFile)
         {
             try
             {
-                File.WriteAllLines(localDatabase, GetStringFromData());
+                File.WriteAllLines(pathToFile, GetStringFromData());
             }
             catch (FileNotFoundException e)
             {
@@ -88,11 +88,14 @@ namespace FinishLine.Core.Repository
             }
         }
 
-        public void LoadDataFromFile(String localDatabase)
+        /// <summary>
+        /// Takes text file and converts each line to instance 
+        /// </summary>
+        public void LoadDataFromFile(String pathToFile)
         {
             try
             {
-                string[] lines = File.ReadAllLines(localDatabase);
+                string[] lines = File.ReadAllLines(pathToFile);
 
                 for (int i = 0; i < lines.Length; i++)
                 {

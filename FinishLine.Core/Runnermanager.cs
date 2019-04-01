@@ -1,7 +1,6 @@
 ﻿using FinishLine.Core.Model;
 using FinishLine.Core.Repository;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FinishLine.Core
 {
@@ -88,7 +87,5 @@ namespace FinishLine.Core
         {
             return key.ToString("000");
         }
-
-
     }
 }

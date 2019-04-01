@@ -61,7 +61,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.bttnOkRunnerDelete = new System.Windows.Forms.Button();
             this.nmrcUpDwnNumberDelete = new System.Windows.Forms.NumericUpDown();
-            this.nmrcUpDwnNumberEdit = new System.Windows.Forms.NumericUpDown();
             this.bttnContinue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdRegisteredRunnersVw)).BeginInit();
             this.grpBxAddingRunner.SuspendLayout();
@@ -72,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnAgeEdit)).BeginInit();
             this.grpBxDeleteRunner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // dtGrdRegisteredRunnersVw
@@ -84,7 +82,6 @@
             this.dtGrdRegisteredRunnersVw.ReadOnly = true;
             this.dtGrdRegisteredRunnersVw.Size = new System.Drawing.Size(582, 237);
             this.dtGrdRegisteredRunnersVw.TabIndex = 0;
-            this.dtGrdRegisteredRunnersVw.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // bttnAddRunnerWithGeneratedId
             // 
@@ -105,15 +102,16 @@
             // 
             // cmbBxCountryAdd
             // 
+            this.cmbBxCountryAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBxCountryAdd.FormattingEnabled = true;
             this.cmbBxCountryAdd.Location = new System.Drawing.Point(112, 34);
             this.cmbBxCountryAdd.Name = "cmbBxCountryAdd";
             this.cmbBxCountryAdd.Size = new System.Drawing.Size(121, 21);
             this.cmbBxCountryAdd.TabIndex = 3;
-            this.cmbBxCountryAdd.SelectedIndexChanged += new System.EventHandler(this.cmbBxCountryAdd_SelectedIndexChanged);
             // 
             // cmbBxSexAdd
             // 
+            this.cmbBxSexAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBxSexAdd.FormattingEnabled = true;
             this.cmbBxSexAdd.Location = new System.Drawing.Point(308, 33);
             this.cmbBxSexAdd.Name = "cmbBxSexAdd";
@@ -252,7 +250,6 @@
             // 
             // grpBxEditRunner
             // 
-            this.grpBxEditRunner.Controls.Add(this.nmrcUpDwnNumberEdit);
             this.grpBxEditRunner.Controls.Add(this.nmrcUpDwnPickNumberToEdit);
             this.grpBxEditRunner.Controls.Add(this.lblNumberRunnerEdit);
             this.grpBxEditRunner.Controls.Add(this.lblTypeNumberOfRunnerToEdit);
@@ -368,6 +365,7 @@
             // 
             // cmbBxCountryEdit
             // 
+            this.cmbBxCountryEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBxCountryEdit.FormattingEnabled = true;
             this.cmbBxCountryEdit.Location = new System.Drawing.Point(112, 73);
             this.cmbBxCountryEdit.Name = "cmbBxCountryEdit";
@@ -398,9 +396,9 @@
             // 
             // bttnOkRunnerEdit
             // 
-            this.bttnOkRunnerEdit.Location = new System.Drawing.Point(502, 72);
+            this.bttnOkRunnerEdit.Location = new System.Drawing.Point(435, 72);
             this.bttnOkRunnerEdit.Name = "bttnOkRunnerEdit";
-            this.bttnOkRunnerEdit.Size = new System.Drawing.Size(71, 21);
+            this.bttnOkRunnerEdit.Size = new System.Drawing.Size(138, 21);
             this.bttnOkRunnerEdit.TabIndex = 1;
             this.bttnOkRunnerEdit.Text = "Edit Runner";
             this.bttnOkRunnerEdit.UseVisualStyleBackColor = true;
@@ -408,6 +406,7 @@
             // 
             // cmbBxSexEdit
             // 
+            this.cmbBxSexEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBxSexEdit.FormattingEnabled = true;
             this.cmbBxSexEdit.Location = new System.Drawing.Point(308, 72);
             this.cmbBxSexEdit.Name = "cmbBxSexEdit";
@@ -467,28 +466,6 @@
             0,
             0});
             // 
-            // nmrcUpDwnNumberEdit
-            // 
-            this.nmrcUpDwnNumberEdit.Location = new System.Drawing.Point(435, 72);
-            this.nmrcUpDwnNumberEdit.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrcUpDwnNumberEdit.Name = "nmrcUpDwnNumberEdit";
-            this.nmrcUpDwnNumberEdit.Size = new System.Drawing.Size(58, 20);
-            this.nmrcUpDwnNumberEdit.TabIndex = 13;
-            this.nmrcUpDwnNumberEdit.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // bttnContinue
             // 
             this.bttnContinue.Location = new System.Drawing.Point(578, 586);
@@ -525,7 +502,6 @@
             this.grpBxDeleteRunner.ResumeLayout(false);
             this.grpBxDeleteRunner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnNumberEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -566,7 +542,6 @@
         private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberAdd;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnAgeAdd;
         private System.Windows.Forms.NumericUpDown nmrcUpDwnPickNumberToEdit;
-        private System.Windows.Forms.NumericUpDown nmrcUpDwnNumberEdit;
         private System.Windows.Forms.Button bttnContinue;
     }
 }

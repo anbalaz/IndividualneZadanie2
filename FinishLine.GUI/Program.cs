@@ -25,11 +25,6 @@ namespace FinishLine
             RaceManager raceManager = new RaceManager(fileRepository);
             RunnerManager runnerManager = new RunnerManager(fileRepository);
 
-            //file.SaveDataToFile("Halleluja.txt");
-            //file.LoadDataFromFile("Halleluja.txt");
-
-            //Console.WriteLine(($"{DateTime.Now.ToString()}{FileRepository.SEPARATOR_LAPS}"));
-
 
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm(runnerManager, stateManager, raceManager, fileRepository));

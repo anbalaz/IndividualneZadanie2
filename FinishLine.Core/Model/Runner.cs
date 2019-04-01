@@ -29,31 +29,37 @@ namespace FinishLine.Core.Model
             _finishedLapsTime = finishedLapsTime;
         }
 
-        public void AddLapTime(DateTime dateTime)
+        public void AddLapTimeToList(DateTime dateTime)
         {
             _finishedLapsTime.Add(dateTime);
         }
 
-        public List<DateTime> GetFinishedLapsTime()
+        public List<DateTime> GetFinishedLapsTimeList()
         {
             return _finishedLapsTime;
         }
 
-        public int GetLapsCount()
+        public int GetFinishedLapsTimeListCount()
         {
             return _finishedLapsTime.Count;
         }
-
+        /// <summary>
+        /// returns timeSpan of 2 last DateTime now in _finishedLapsTime 
+        /// </summary>
         public TimeSpan CountDifferenceBetweenLaps()
         {
-            return GetFinishedLapsTime().Last() - GetFinishedLapsTime()[GetFinishedLapsTime().Count - 2];
+            return GetFinishedLapsTimeList().Last() - GetFinishedLapsTimeList()[GetFinishedLapsTimeList().Count - 2];
         }
-
+        /// <summary>
+        /// returns timeSpan between first and last entry _finishedLapsTime 
+        /// </summary>
         public TimeSpan CountTimeTotal()
         {
-            return GetFinishedLapsTime().Last() - GetFinishedLapsTime().First();
+            return GetFinishedLapsTimeList().Last() - GetFinishedLapsTimeList().First();
         }
-
+        /// <summary>
+        /// string is calibrated for saving in txt file
+        /// </summary>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
