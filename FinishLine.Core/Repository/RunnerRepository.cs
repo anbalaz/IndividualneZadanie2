@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FinishLine.Core.Repository
 {
-    public class RunnerRepository : IRunnerRepository
+    public class RunnerRepository : IFileRepository
     {
         private static Dictionary<int, Runner> runMTFCKR = new Dictionary<int, Runner>();
 
@@ -26,6 +26,21 @@ namespace FinishLine.Core.Repository
         public Dictionary<int, Runner> GetDictionaryOFRunners()
         {
             return runMTFCKR;
+        }
+
+        public Race GetRace()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void LoadDataFromFile(string localDatabase)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SaveDataToFile(string localDatabase)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FinishLine.Core;
 using FinishLine.Core.Model;
+using FinishLine.Core.Repository;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,45 +14,21 @@ namespace FinishLine
         private StateManager _stateManager;
         private RunnersForm form;
         private Race race;
+        private IFileRepository _fileRepository;
 
-        public MainForm(RunnerManager runnerManager, StateManager stateManager, RaceManager raceManager)
+        public MainForm(RunnerManager runnerManager, StateManager stateManager, RaceManager raceManager, IFileRepository fileRepository)
         {
+            InitializeComponent();
+
             _runnerManager = runnerManager;
             _raceManager = raceManager;
-            InitializeComponent();
+            _fileRepository = fileRepository;
             _stateManager = stateManager;
-            form = new RunnersForm(_runnerManager, _stateManager);
             bttnRunnerAddLap.Enabled = false;
             bttnRunnerSteppingOut.Enabled = false;
             SetRowsToDatagrid();
             SetRowsToDtGrdVwFinishedRunners();
-        }
-
-        private void addRunnerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            form.ShowDialog();
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            const string message = "Do you want to save data?";
-            var result = MessageBox.Show(message, "Question",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-
-            }
-        }
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            RunnerSaveDialog loadRunnersDialog = new RunnerSaveDialog();
-            var result = loadRunnersDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //loadRunnersDialog.SelectedPath;
-            }
+            form = new RunnersForm(_runnerManager, _stateManager);
         }
 
         private void SetRowsToDatagrid()
@@ -66,6 +43,87 @@ namespace FinishLine
             dtGrdVwFinishedRunners.Columns.Add("Key", "NUMBER");
             dtGrdVwFinishedRunners.Columns.Add("_finishedLapsTime", "Finished lap at time");
             dtGrdVwFinishedRunners.Columns.Add("TotalTime", "Total time");
+        }
+
+        private void PopulateDataGridStart()
+        {
+            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
+            {
+                dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                    runner.Value.GetFinishedLapsTime().Last().ToString()
+                   );
+            }
+        }
+
+        private void PopulateDtGrdVwFinishedRunners()
+        {
+            foreach (var runner in _raceManager.GetWinningDirectory())
+            {
+                dtGrdVwFinishedRunners.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                    runner.Value.GetFinishedLapsTime().Last().ToString(), runner.Value.CountTimeTotal().ToString());
+            }
+            if (_raceManager.IsTheRaceFinished(race.NumberOfWinners))
+            {
+                MessageBox.Show("The race has ended");
+                bttnRunnerAddLap.Enabled = false;
+                bttnRunnerSteppingOut.Enabled = false;
+            }
+        }
+
+        private void SaveFile()
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string strfilename = saveFileDialog.InitialDirectory + saveFileDialog.FileName;
+                try
+                {
+                    _fileRepository.SaveDataToFile(strfilename);
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show("Could not save the file " + e.Message);
+                } 
+
+            }
+        }
+
+        private void LoadFile()
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string strfilename = openFileDialog.InitialDirectory + openFileDialog.FileName;
+                try
+                {
+                    _fileRepository.LoadDataFromFile(strfilename);
+                    _runnerManager = new RunnerManager(_fileRepository);
+                    _raceManager = new RaceManager(_fileRepository);
+                    race = _fileRepository.GetRace();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Could not open the file "+e.Message);
+                }
+            }
+        }
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            const string message = "Do you want to save data?";
+            var result = MessageBox.Show(message, "Question",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                SaveFile();
+            }
+
+        }
+
+        private void addRunnerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            form.ShowDialog();
         }
 
         private void bttnStartTheRace_Click(object sender, EventArgs e)
@@ -92,31 +150,6 @@ namespace FinishLine
             else
             {
                 MessageBox.Show("Please check if you selected all values");
-            }
-        }
-
-        private void PopulateDataGridStart()
-        {
-            foreach (var runner in _runnerManager.GetDictionaryOFRunners())
-            {
-                dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                    runner.Value.GetFinishedLapsTime().Last().ToString()
-                   );
-            }
-        }
-
-        private void PopulateDtGrdVwFinishedRunners()
-        {
-            foreach (var runner in _raceManager.GetWinningDirectory())
-            {
-                dtGrdVwFinishedRunners.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
-                    runner.Value.GetFinishedLapsTime().Last().ToString(),runner.Value.CountTimeTotal().ToString());
-            }
-            if (_raceManager.IsTheRaceFinished(race.NumberOfWinners))
-            {
-                MessageBox.Show("The race has ended");
-                bttnRunnerAddLap.Enabled = false;
-                bttnRunnerSteppingOut.Enabled = false;
             }
         }
 
@@ -158,5 +191,14 @@ namespace FinishLine
             }
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadFile();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
     }
 }

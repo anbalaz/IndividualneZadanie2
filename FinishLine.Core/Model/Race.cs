@@ -24,9 +24,9 @@ namespace FinishLine.Core.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{NumberofLaps}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{LengthOfLap}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{NumberOfWinners}{FileManager.SEPARATOR_PROPERTIES}");
+            sb.Append($"{NumberofLaps}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{LengthOfLap}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{NumberOfWinners}{FileRepository.SEPARATOR_PROPERTIES}");
           
             return sb.ToString();
         }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.souborToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,8 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.grpBxSettingRace = new System.Windows.Forms.GroupBox();
-            this.dataGridViewGrouper1 = new Subro.Controls.DataGridViewGrouper(this.components);
             this.dtGrdVwFinishedRunners = new System.Windows.Forms.DataGridView();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwMainRaceForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmercUpDwnRunnerAddLap)).BeginInit();
@@ -86,12 +86,14 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "Load";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // RunnerToolStripMenuItem
             // 
@@ -274,10 +276,6 @@
             this.grpBxSettingRace.TabStop = false;
             this.grpBxSettingRace.Text = "Setting Race";
             // 
-            // dataGridViewGrouper1
-            // 
-            this.dataGridViewGrouper1.DataGridView = this.dtGrdVwMainRaceForm;
-            // 
             // dtGrdVwFinishedRunners
             // 
             this.dtGrdVwFinishedRunners.AllowUserToAddRows = false;
@@ -287,6 +285,14 @@
             this.dtGrdVwFinishedRunners.ReadOnly = true;
             this.dtGrdVwFinishedRunners.Size = new System.Drawing.Size(419, 360);
             this.dtGrdVwFinishedRunners.TabIndex = 19;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "|*.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "|*.txt";
             // 
             // MainForm
             // 
@@ -305,7 +311,6 @@
             this.Name = "MainForm";
             this.Text = "Finish Line";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwMainRaceForm)).EndInit();
@@ -329,7 +334,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RunnerToolStripMenuItem;
-        private Subro.Controls.DataGridViewGrouper dataGridViewGrouper1;
         private System.Windows.Forms.Button bttnStartTheRace;
         private System.Windows.Forms.Label lblRaceStartTime;
         private System.Windows.Forms.DataGridView dtGrdVwMainRaceForm;
@@ -345,6 +349,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox grpBxSettingRace;
         private System.Windows.Forms.DataGridView dtGrdVwFinishedRunners;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

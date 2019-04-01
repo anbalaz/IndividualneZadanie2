@@ -7,9 +7,9 @@ namespace FinishLine.Core
     public class RaceManager
     {
         private readonly Dictionary<int, Runner> _winningDirectory = new Dictionary<int, Runner>();
-        private readonly IRunnerRepository _runnerRepository;
+        private readonly IFileRepository _runnerRepository;
 
-        public RaceManager(IRunnerRepository runnerRepository)
+        public RaceManager(IFileRepository runnerRepository)
         {
             _runnerRepository = runnerRepository;
         }
@@ -17,11 +17,6 @@ namespace FinishLine.Core
         public bool IsTheRaceFinished(int maximumFinishers)
         {
             return _winningDirectory.Count >= maximumFinishers;
-        }
-
-        public void AddRunnerToWinningDirectory()
-        {
-
         }
 
         public bool IsFinishedRunnerAddedToWinningDirectory(int maximumLaps, int key, Runner runner)

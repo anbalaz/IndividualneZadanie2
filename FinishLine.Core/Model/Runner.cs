@@ -51,21 +51,30 @@ namespace FinishLine.Core.Model
 
         public TimeSpan CountTimeTotal()
         {
-            return  GetFinishedLapsTime().Last() - GetFinishedLapsTime().First();
+            return GetFinishedLapsTime().Last() - GetFinishedLapsTime().First();
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Name}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{StateOfOrigin}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{Age}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{Sex}{FileManager.SEPARATOR_PROPERTIES}");
-            sb.Append($"{IsOutOfRace}{FileManager.SEPARATOR_PROPERTIES}");
-            foreach (var date in _finishedLapsTime)
+            sb.Append($"{Name}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{StateOfOrigin}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{Age}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{Sex}{FileRepository.SEPARATOR_PROPERTIES}");
+            sb.Append($"{IsOutOfRace}{FileRepository.SEPARATOR_PROPERTIES}");
+
+            for (int i = 0; i < _finishedLapsTime.Count; i++)
             {
-                sb.Append($"{date.ToString()}SEPARATOR_LAPS");
+                if (i + 1 != _finishedLapsTime.Count)
+                {
+                    sb.Append($"{_finishedLapsTime[i].ToString()}{FileRepository.SEPARATOR_LAPS}");
+                }
+                else
+                {
+                    sb.Append($"{_finishedLapsTime[i].ToString()}");
+                }
             }
+
             return sb.ToString();
         }
     }

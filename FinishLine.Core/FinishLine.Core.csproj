@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Model\Race.cs" />
     <Compile Include="RaceManager.cs" />
-    <Compile Include="Repository\FileManager.cs" />
+    <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="RunnerManager.cs" />
     <Compile Include="Model\Runner.cs" />
     <Compile Include="Model\Gender.cs" />
@@ -54,7 +54,7 @@
     <Compile Include="Model\State.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IStateRepository.cs" />
-    <Compile Include="Repository\IRunnerRepository.cs" />
+    <Compile Include="Repository\IFileRepository.cs" />
     <Compile Include="Repository\RunnerRepository.cs" />
     <Compile Include="StateManager.cs" />
   </ItemGroup>

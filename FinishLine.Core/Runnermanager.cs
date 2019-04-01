@@ -7,18 +7,17 @@ namespace FinishLine.Core
 {
     public class RunnerManager
     {
-        private IRunnerRepository _runnerRepository;
+        private IFileRepository _runnerRepository;
         private readonly Dictionary<int, Runner> _runnersDirectory;
-        private static int _keyId = 1;
+        private static int _keyId = 0;
         private const int KEY_MINIMUM_VALUE = 1;
         private const int KEY_MAXIMUM_VALUE = 999;
 
 
-        public RunnerManager(IRunnerRepository runnerRepository)
+        public RunnerManager(IFileRepository runnerRepository)
         {
             _runnerRepository = runnerRepository;
             _runnersDirectory = runnerRepository.GetDictionaryOFRunners();
-            _keyId = _runnersDirectory.Keys.Max();
         }
 
         public Dictionary<int, Runner> GetDictionaryOFRunners()
