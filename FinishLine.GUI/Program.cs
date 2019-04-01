@@ -27,7 +27,7 @@ namespace FinishLine
 
 
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(runnerManager, stateManager));
+            Application.Run(new MainForm(runnerManager, stateManager,raceManager));
         }
     }
 }

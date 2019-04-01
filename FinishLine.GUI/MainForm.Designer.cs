@@ -37,7 +37,7 @@
             this.dataGridViewGrouper1 = new Subro.Controls.DataGridViewGrouper(this.components);
             this.bttnStartTheRace = new System.Windows.Forms.Button();
             this.lblRaceStartTime = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtGrdVwMainRaceForm = new System.Windows.Forms.DataGridView();
             this.bttnRunnerAddLap = new System.Windows.Forms.Button();
             this.nmercUpDwnRunnerAddLap = new System.Windows.Forms.NumericUpDown();
             this.bttnRunnerSteppingOut = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.grpBxSettingRace = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwMainRaceForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmercUpDwnRunnerAddLap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmercUpDwnRunnerSteppingOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnLengthOfLap)).BeginInit();
@@ -82,13 +82,13 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "Load";
             // 
             // RunnerToolStripMenuItem
@@ -98,15 +98,11 @@
             this.RunnerToolStripMenuItem.Text = "Runners ";
             this.RunnerToolStripMenuItem.Click += new System.EventHandler(this.addRunnerToolStripMenuItem_Click);
             // 
-            // dataGridViewGrouper1
-            // 
-            this.dataGridViewGrouper1.DisplayGroup += new System.EventHandler<Subro.Controls.GroupDisplayEventArgs>(this.dataGridViewGrouper1_DisplayGroup);
-            // 
             // bttnStartTheRace
             // 
-            this.bttnStartTheRace.Location = new System.Drawing.Point(90, 184);
+            this.bttnStartTheRace.Location = new System.Drawing.Point(121, 180);
             this.bttnStartTheRace.Name = "bttnStartTheRace";
-            this.bttnStartTheRace.Size = new System.Drawing.Size(111, 23);
+            this.bttnStartTheRace.Size = new System.Drawing.Size(80, 27);
             this.bttnStartTheRace.TabIndex = 1;
             this.bttnStartTheRace.Text = "Start Race";
             this.bttnStartTheRace.UseVisualStyleBackColor = true;
@@ -121,22 +117,25 @@
             this.lblRaceStartTime.TabIndex = 2;
             this.lblRaceStartTime.Text = "Race start time";
             // 
-            // dataGridView1
+            // dtGrdVwMainRaceForm
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 42);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(527, 355);
-            this.dataGridView1.TabIndex = 3;
+            this.dtGrdVwMainRaceForm.AllowUserToAddRows = false;
+            this.dtGrdVwMainRaceForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdVwMainRaceForm.Location = new System.Drawing.Point(33, 42);
+            this.dtGrdVwMainRaceForm.Name = "dtGrdVwMainRaceForm";
+            this.dtGrdVwMainRaceForm.ReadOnly = true;
+            this.dtGrdVwMainRaceForm.Size = new System.Drawing.Size(527, 355);
+            this.dtGrdVwMainRaceForm.TabIndex = 3;
             // 
             // bttnRunnerAddLap
             // 
-            this.bttnRunnerAddLap.Location = new System.Drawing.Point(677, 328);
+            this.bttnRunnerAddLap.Location = new System.Drawing.Point(690, 331);
             this.bttnRunnerAddLap.Name = "bttnRunnerAddLap";
-            this.bttnRunnerAddLap.Size = new System.Drawing.Size(111, 23);
+            this.bttnRunnerAddLap.Size = new System.Drawing.Size(89, 20);
             this.bttnRunnerAddLap.TabIndex = 4;
             this.bttnRunnerAddLap.Text = "Add lap";
             this.bttnRunnerAddLap.UseVisualStyleBackColor = true;
+            this.bttnRunnerAddLap.Click += new System.EventHandler(this.bttnRunnerAddLap_Click);
             // 
             // nmercUpDwnRunnerAddLap
             // 
@@ -162,12 +161,13 @@
             // 
             // bttnRunnerSteppingOut
             // 
-            this.bttnRunnerSteppingOut.Location = new System.Drawing.Point(677, 374);
+            this.bttnRunnerSteppingOut.Location = new System.Drawing.Point(690, 374);
             this.bttnRunnerSteppingOut.Name = "bttnRunnerSteppingOut";
-            this.bttnRunnerSteppingOut.Size = new System.Drawing.Size(111, 23);
+            this.bttnRunnerSteppingOut.Size = new System.Drawing.Size(89, 23);
             this.bttnRunnerSteppingOut.TabIndex = 6;
             this.bttnRunnerSteppingOut.Text = "Step out";
             this.bttnRunnerSteppingOut.UseVisualStyleBackColor = true;
+            this.bttnRunnerSteppingOut.Click += new System.EventHandler(this.bttnRunnerSteppingOut_Click);
             // 
             // nmercUpDwnRunnerSteppingOut
             // 
@@ -199,7 +199,7 @@
             0,
             0,
             65536});
-            this.nmrcUpDwnLengthOfLap.Location = new System.Drawing.Point(121, 71);
+            this.nmrcUpDwnLengthOfLap.Location = new System.Drawing.Point(135, 71);
             this.nmrcUpDwnLengthOfLap.Maximum = new decimal(new int[] {
             200,
             0,
@@ -211,14 +211,14 @@
             // 
             // nmrcUpDwnNumberOfLaps
             // 
-            this.nmrcUpDwnNumberOfLaps.Location = new System.Drawing.Point(121, 32);
+            this.nmrcUpDwnNumberOfLaps.Location = new System.Drawing.Point(135, 32);
             this.nmrcUpDwnNumberOfLaps.Name = "nmrcUpDwnNumberOfLaps";
             this.nmrcUpDwnNumberOfLaps.Size = new System.Drawing.Size(66, 20);
             this.nmrcUpDwnNumberOfLaps.TabIndex = 9;
             // 
             // nmrcUpDwnNumberOfWinners
             // 
-            this.nmrcUpDwnNumberOfWinners.Location = new System.Drawing.Point(121, 111);
+            this.nmrcUpDwnNumberOfWinners.Location = new System.Drawing.Point(135, 111);
             this.nmrcUpDwnNumberOfWinners.Maximum = new decimal(new int[] {
             20,
             0,
@@ -281,7 +281,7 @@
             this.Controls.Add(this.bttnRunnerSteppingOut);
             this.Controls.Add(this.nmercUpDwnRunnerAddLap);
             this.Controls.Add(this.bttnRunnerAddLap);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtGrdVwMainRaceForm);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.grpBxSettingRace);
             this.MainMenuStrip = this.menuStrip1;
@@ -291,7 +291,7 @@
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwMainRaceForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmercUpDwnRunnerAddLap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmercUpDwnRunnerSteppingOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrcUpDwnLengthOfLap)).EndInit();
@@ -314,7 +314,7 @@
         private Subro.Controls.DataGridViewGrouper dataGridViewGrouper1;
         private System.Windows.Forms.Button bttnStartTheRace;
         private System.Windows.Forms.Label lblRaceStartTime;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtGrdVwMainRaceForm;
         private System.Windows.Forms.Button bttnRunnerAddLap;
         private System.Windows.Forms.NumericUpDown nmercUpDwnRunnerAddLap;
         private System.Windows.Forms.Button bttnRunnerSteppingOut;

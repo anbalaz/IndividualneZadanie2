@@ -1,49 +1,36 @@
 ﻿using FinishLine.Core.Model;
 using FinishLine.Core.Repository;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FinishLine.Core
 {
     public class RaceManager
     {
         private readonly Dictionary<int, Runner> _runnersDirectory;
-        private  Dictionary<int, Runner> _runnersWinnersDirectory= new Dictionary<int, Runner>();
-
-        private int _count = 0;
 
         public RaceManager(IRunnerRepository runnerRepository)
         {
             _runnersDirectory = runnerRepository.GetDictionaryOFRunners();
         }
 
-        public void CheckForWinningRunners(int maximumLaps)
+        public bool IsTheRaceFinished(int maximumLaps, int maximumFinishers)
         {
+            int count = 0;
             for (int i = 0; i < _runnersDirectory.Count; i++)
             {
                 if (_runnersDirectory[i].GetLapsCount() == maximumLaps)
                 {
-                    _count++;
-                    _runnersWinnersDirectory.Add(i,_runnersDirectory[i]);
-                    _runnersDirectory.Remove(i);
-                    break;
+                    count++;
                 }
-
             }
+            return count >= maximumFinishers;
         }
 
         public void RemoveRunnerFromRace(int keyRunner)
         {
             _runnersDirectory.Remove(keyRunner);
-        }
-
-        public bool IsTheRaceFinished(int maximumFinishers)
-        {
-            return _count >= maximumFinishers;
-        }
-
-        public void CountDifferencebetweenlaps()
-        {
-
         }
 
     }

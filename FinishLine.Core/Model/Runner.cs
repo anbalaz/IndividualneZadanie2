@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FinishLine.Core.Model
@@ -11,7 +12,7 @@ namespace FinishLine.Core.Model
         public int Age { get; set; }
         public Gender Sex { get; set; }
         public bool IsOutOfRace { get; set; }
-        private List<DateTime> _finishedLapTime = new List<DateTime>();
+        private List<DateTime> _finishedLapsTime = new List<DateTime>();
 
         public Runner(string name, int stateOfOrigin, int age, Gender sex)
         {
@@ -23,17 +24,22 @@ namespace FinishLine.Core.Model
 
         public void AddLapTime(DateTime dateTime)
         {
-            _finishedLapTime.Add(dateTime);
+            _finishedLapsTime.Add(dateTime);
         }
 
-        public List<DateTime> GetFinishedLapTime()
+        public List<DateTime> GetFinishedLapsTime()
         {
-            return _finishedLapTime;
+            return _finishedLapsTime;
         }
 
         public int GetLapsCount()
         {
-            return _finishedLapTime.Count;
+            return _finishedLapsTime.Count;
+        }
+
+        public TimeSpan CountDifferenceBetweenLaps()
+        {
+            return GetFinishedLapsTime().Last() - GetFinishedLapsTime()[GetFinishedLapsTime().Count - 2];
         }
 
         public override string ToString()
