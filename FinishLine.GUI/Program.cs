@@ -19,15 +19,19 @@ namespace FinishLine
         static void Main()
         {
 
-            IStateRepository stateRepository = new StateRepository();
-            StateManager stateManager = new StateManager(stateRepository);
-            IRunnerRepository runnerRepository = new RunnerRepository();
-            RaceManager raceManager = new RaceManager(runnerRepository);
-            RunnerManager runnerManager = new RunnerManager(runnerRepository);
+            //IStateRepository stateRepository = new StateRepository();
+            //StateManager stateManager = new StateManager(stateRepository);
+            //IRunnerRepository runnerRepository = new RunnerRepository();
+            //RaceManager raceManager = new RaceManager(runnerRepository);
+            //RunnerManager runnerManager = new RunnerManager(runnerRepository);
+
+            FileManager file = new FileManager();
+            //file.SaveDataToFile("Halleluja.txt");
+            file.LoadDataFromFile("Halleluja.txt");
 
 
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(runnerManager, stateManager,raceManager));
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new MainForm(runnerManager, stateManager,raceManager));
         }
     }
 }

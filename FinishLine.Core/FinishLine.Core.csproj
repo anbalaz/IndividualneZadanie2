@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Model\Race.cs" />
     <Compile Include="RaceManager.cs" />
+    <Compile Include="Repository\FileManager.cs" />
     <Compile Include="RunnerManager.cs" />
     <Compile Include="Model\Runner.cs" />
     <Compile Include="Model\Gender.cs" />

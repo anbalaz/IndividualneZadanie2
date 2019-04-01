@@ -123,7 +123,7 @@
             // 
             this.dtGrdVwMainRaceForm.AllowUserToAddRows = false;
             this.dtGrdVwMainRaceForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwMainRaceForm.Location = new System.Drawing.Point(33, 37);
+            this.dtGrdVwMainRaceForm.Location = new System.Drawing.Point(24, 37);
             this.dtGrdVwMainRaceForm.Name = "dtGrdVwMainRaceForm";
             this.dtGrdVwMainRaceForm.ReadOnly = true;
             this.dtGrdVwMainRaceForm.Size = new System.Drawing.Size(419, 360);
@@ -131,7 +131,7 @@
             // 
             // bttnRunnerAddLap
             // 
-            this.bttnRunnerAddLap.Location = new System.Drawing.Point(581, 331);
+            this.bttnRunnerAddLap.Location = new System.Drawing.Point(572, 331);
             this.bttnRunnerAddLap.Name = "bttnRunnerAddLap";
             this.bttnRunnerAddLap.Size = new System.Drawing.Size(89, 20);
             this.bttnRunnerAddLap.TabIndex = 4;
@@ -141,7 +141,7 @@
             // 
             // nmercUpDwnRunnerAddLap
             // 
-            this.nmercUpDwnRunnerAddLap.Location = new System.Drawing.Point(469, 331);
+            this.nmercUpDwnRunnerAddLap.Location = new System.Drawing.Point(460, 331);
             this.nmercUpDwnRunnerAddLap.Maximum = new decimal(new int[] {
             999,
             0,
@@ -163,7 +163,7 @@
             // 
             // bttnRunnerSteppingOut
             // 
-            this.bttnRunnerSteppingOut.Location = new System.Drawing.Point(581, 374);
+            this.bttnRunnerSteppingOut.Location = new System.Drawing.Point(572, 374);
             this.bttnRunnerSteppingOut.Name = "bttnRunnerSteppingOut";
             this.bttnRunnerSteppingOut.Size = new System.Drawing.Size(89, 23);
             this.bttnRunnerSteppingOut.TabIndex = 6;
@@ -173,7 +173,7 @@
             // 
             // nmercUpDwnRunnerSteppingOut
             // 
-            this.nmercUpDwnRunnerSteppingOut.Location = new System.Drawing.Point(469, 374);
+            this.nmercUpDwnRunnerSteppingOut.Location = new System.Drawing.Point(460, 374);
             this.nmercUpDwnRunnerSteppingOut.Maximum = new decimal(new int[] {
             999,
             0,
@@ -267,18 +267,22 @@
             this.grpBxSettingRace.Controls.Add(this.bttnStartTheRace);
             this.grpBxSettingRace.Controls.Add(this.lblRaceStartTime);
             this.grpBxSettingRace.Controls.Add(this.label1);
-            this.grpBxSettingRace.Location = new System.Drawing.Point(469, 37);
+            this.grpBxSettingRace.Location = new System.Drawing.Point(460, 37);
             this.grpBxSettingRace.Name = "grpBxSettingRace";
             this.grpBxSettingRace.Size = new System.Drawing.Size(210, 213);
             this.grpBxSettingRace.TabIndex = 18;
             this.grpBxSettingRace.TabStop = false;
             this.grpBxSettingRace.Text = "Setting Race";
             // 
+            // dataGridViewGrouper1
+            // 
+            this.dataGridViewGrouper1.DataGridView = this.dtGrdVwMainRaceForm;
+            // 
             // dtGrdVwFinishedRunners
             // 
             this.dtGrdVwFinishedRunners.AllowUserToAddRows = false;
             this.dtGrdVwFinishedRunners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwFinishedRunners.Location = new System.Drawing.Point(685, 37);
+            this.dtGrdVwFinishedRunners.Location = new System.Drawing.Point(676, 37);
             this.dtGrdVwFinishedRunners.Name = "dtGrdVwFinishedRunners";
             this.dtGrdVwFinishedRunners.ReadOnly = true;
             this.dtGrdVwFinishedRunners.Size = new System.Drawing.Size(419, 360);

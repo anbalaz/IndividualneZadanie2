@@ -65,7 +65,7 @@ namespace FinishLine
         {
             dtGrdVwFinishedRunners.Columns.Add("Key", "NUMBER");
             dtGrdVwFinishedRunners.Columns.Add("_finishedLapsTime", "Finished lap at time");
-            dtGrdVwFinishedRunners.Columns.Add("Sex", "Time Of Lap");
+            dtGrdVwFinishedRunners.Columns.Add("TotalTime", "Total time");
         }
 
         private void bttnStartTheRace_Click(object sender, EventArgs e)
@@ -105,30 +105,41 @@ namespace FinishLine
             }
         }
 
+        private void PopulateDtGrdVwFinishedRunners()
+        {
+            foreach (var runner in _raceManager.GetWinningDirectory())
+            {
+                dtGrdVwFinishedRunners.Rows.Add(_runnerManager.KeyValueToString(runner.Key),
+                    runner.Value.GetFinishedLapsTime().Last().ToString(),runner.Value.CountTimeTotal().ToString());
+            }
+            if (_raceManager.IsTheRaceFinished(race.NumberOfWinners))
+            {
+                MessageBox.Show("The race has ended");
+                bttnRunnerAddLap.Enabled = false;
+                bttnRunnerSteppingOut.Enabled = false;
+            }
+        }
+
         private void bttnRunnerAddLap_Click(object sender, EventArgs e)
         {
             if (!_runnerManager.IsKeyIdFree((int)nmercUpDwnRunnerAddLap.Value) &&
-                _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerSteppingOut.Value].IsOutOfRace == false)
+                _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].IsOutOfRace == false)
             {
                 _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].AddLapTime(DateTime.Now);
                 dtGrdVwMainRaceForm.Rows.Add(_runnerManager.KeyValueToString((int)nmercUpDwnRunnerAddLap.Value),
                     DateTime.Now.ToString(),
-
                 _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].CountDifferenceBetweenLaps().ToString());
-                _raceManager.AddFinishedRunnerToWinningDirectory(race.NumberofLaps);
 
-                dtGrdVwFinishedRunners.Rows.Clear();
 
-                foreach (var runner in _raceManager.GetWinningDirectory())
+                if (_raceManager.IsFinishedRunnerAddedToWinningDirectory(race.NumberofLaps,
+                    (int)nmercUpDwnRunnerAddLap.Value,
+                    _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value]))
                 {
-                    dtGrdVwFinishedRunners.Rows.Add(_runnerManager.KeyValueToString(runner.Key), runner.Value.GetFinishedLapsTime().Last().ToString());
-                    if (_raceManager.IsTheRaceFinished(race.NumberOfWinners))
-                    {
-                        MessageBox.Show("The race has ended");
-                    }
+                    _runnerManager.GetDictionaryOFRunners()[(int)nmercUpDwnRunnerAddLap.Value].IsOutOfRace = true;
+                    dtGrdVwFinishedRunners.Rows.Clear();
+                    PopulateDtGrdVwFinishedRunners();
                 }
             }
-
             else
             {
                 MessageBox.Show("There is no racer running with selected number");
