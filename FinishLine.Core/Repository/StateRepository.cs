@@ -14,7 +14,9 @@ namespace FinishLine.Core.Repository
         private const char VALUE_SEPARATOR = ';';
 
 
-
+        /// <summary>
+        /// gets list of states from csv file and returns dictionary 
+        /// </summary>
         public Dictionary<int, State> GetDictionaryOFStates()
         {
             int count = 1;

@@ -39,6 +39,9 @@ namespace FinishLine.Core
             _runnersDirectory.Add(keyId, runner);
         }
 
+        /// <summary>
+        /// returns new automaticly generated key for dictionary, if there is no free number, returns 0
+        /// </summary>
         private int NewKeyId()
         {
             _keyId++;
@@ -73,6 +76,9 @@ namespace FinishLine.Core
             return 0;
         }
 
+        /// <summary>
+        /// validates if requested key is already used, returns bool
+        /// </summary>
         public bool IsKeyIdFree(int keyId)
         {
             bool ret = false;
@@ -83,6 +89,9 @@ namespace FinishLine.Core
             return ret;
         }
 
+        /// <summary>
+        /// parses int to string value ,for example int 1= 001, 10= 010;
+        /// </summary>
         public string KeyValueToString(int key)
         {
             return key.ToString("000");
